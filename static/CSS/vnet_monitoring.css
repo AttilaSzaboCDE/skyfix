@@ -1,0 +1,8 @@
+.dataTable tbody tr.odd {
+    background-color: #e0e0e0;  /* sötétebb szürke */
+  }
+
+  /* Ha szeretnél egy aktív sor színt */
+  .dataTable tbody tr:hover {
+    background-color: #d3d3d3;  /* kicsit sötétebb szürke a hover állapothoz */
+  }

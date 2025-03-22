@@ -1,9 +1,15 @@
 {% extends "base_index.html" %}
 
 {% block content %}
+
+<!-- Ide jönnek a hivatkozások-->
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/vm_monitoring.css') }}">
+<!-- Hivatkozások vége -->
+
+
 <div class="row">
-    <div class="col-12 col-lg-8 col-xxl-9 d-flex">
-        <div class="card flex-fill">
+    <div class="col-12 col-lg-7 col-xxl-8 d-flex">
+        <div class="card flex-fill widget-card border-transparent shadow">
                     <div class="card-header">
                         <div class="card-actions float-end">
                             <a href="https://spark.bootlab.io/dashboard-default?theme=modern#" class="me-1">
@@ -83,8 +89,8 @@
             </div>
         </div>
     </div>
-        <div class="col-12 col-lg-4 col-xxl-3 d-flex">
-            <div class="card flex-fill w-100">
+        <div class="col-12 col-lg-5 col-xxl-4 d-flex">
+            <div class="card flex-fill w-100 widget-card border-transparent shadow">
                 <div class="card-header">
                     <div class="card-actions float-end">
                         <a href="https://spark.bootlab.io/dashboard-default?theme=modern#" class="me-1">
@@ -104,43 +110,63 @@
                     </div>
                     <h5 class="card-title mb-0">Alerts</h5>
                 </div>
-                <div class="card-body flex-fill w-100">
-                    <table class="table table-bordered table-sm w-100">
-                        <thead class="table-light">
-                          <tr>
-                            <th>VM Name</th>
-                            <th>Region</th>
-                            <th>Time</th>
-                            <th>Status</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="bg-light">
-                            <td>Virtual_machine_12</td>
-                            <td>EU-NORTH-1</td>
-                            <td>2025/03/22 11:00:23</td>
-                            <td><span class="badge bg-danger">Error</span></td>
-                          </tr>
-                          <tr>
-                            <td>Virtual_machine_67</td>
-                            <td>WEST-US-1</td>
-                            <td>2025/03/22 11:00:23</td>
-                            <td><span class="badge bg-danger">Error</span></td>
-                          </tr>
-                          <tr class="bg-light">
-                            <td>Virtual_machine_202</td>
-                            <td>EU-WEST-1</td>
-                            <td>2025/03/22 11:00:23</td>
-                            <td><span class="badge bg-danger">Error</span></td>
-                          </tr>
-                          <tr>
-                            <td>Virtual_machine_99</td>
-                            <td>ASIA-EAST-1</td>
-                            <td>2025/03/22 11:00:23</td>
-                            <td><span class="badge bg-danger">Error</span></td>
-                          </tr>
-                        </tbody>
-                      </table>     
+                <div id="datatables-dashboard-projects_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6"></div>
+                        <div class="col-sm-12 col-md-6"></div>
+                    </div>
+                    <div class="row dt-row">
+                        <div class="col-sm-12">
+                            <table id="datatables-dashboard-projects" class="table table-striped my-0 dataTable no-footer" aria-describedby="datatables-dashboard-projects_info">
+                                <thead>
+                                    <tr>
+                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="datatables-dashboard-projects" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Region Name</th>
+                                        <th class="d-none d-xl-table-cell sorting" tabindex="0" aria-controls="datatables-dashboard-projects" rowspan="1" colspan="1" aria-label="Start Date: activate to sort column ascending">VM Name</th>
+                                        <th class="d-none d-xl-table-cell sorting" tabindex="0" aria-controls="datatables-dashboard-projects" rowspan="1" colspan="1" aria-label="End Date: activate to sort column ascending">Deployed time:</th>
+                                        <th class="sorting" tabindex="0" aria-controls="datatables-dashboard-projects" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">Status</th>
+                                    </tr>
+                                </thead>
+                            <tbody>
+                                <tr class="odd">
+                                    <td>Virtual_machine_12</td>
+                                    <td>EU-NORTH-1</td>
+                                    <td>2025/03/22 11:00:23</td>
+                                    <td><span class="badge bg-danger">Error</span></td>
+                                  </tr>
+                                  <tr class="even">
+                                    <td>Virtual_machine_67</td>
+                                    <td>WEST-US-1</td>
+                                    <td>2025/03/22 11:00:23</td>
+                                    <td><span class="badge bg-danger">Error</span></td>
+                                  </tr>
+                                  <tr class="odd">
+                                    <td>Virtual_machine_202</td>
+                                    <td>EU-WEST-1</td>
+                                    <td>2025/03/22 11:00:23</td>
+                                    <td><span class="badge bg-danger">Error</span></td>
+                                  </tr>
+                                  <tr class="even">
+                                    <td>Virtual_machine_99</td>
+                                    <td>ASIA-EAST-1</td>
+                                    <td>2025/03/22 11:00:23</td>
+                                    <td><span class="badge bg-danger">Error</span></td>
+                                  </tr>
+                                  <tr class="odd">
+                                    <td>Virtual_machine_202</td>
+                                    <td>EU-WEST-1</td>
+                                    <td>2025/03/22 11:00:23</td>
+                                    <td><span class="badge bg-danger">Error</span></td>
+                                  </tr>
+                                  <tr class="even">
+                                    <td>Virtual_machine_99</td>
+                                    <td>ASIA-EAST-1</td>
+                                    <td>2025/03/22 11:00:23</td>
+                                    <td><span class="badge bg-danger">Error</span></td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
