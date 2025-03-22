@@ -1,6 +1,149 @@
 {% extends "base_index.html" %}
 
-
 {% block content %}
-<h2>Ez itt a VM Monitoring, jó szórakozást</h2>
+<div class="row">
+    <div class="col-12 col-lg-8 col-xxl-9 d-flex">
+        <div class="card flex-fill">
+                    <div class="card-header">
+                        <div class="card-actions float-end">
+                            <a href="https://spark.bootlab.io/dashboard-default?theme=modern#" class="me-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-refresh-cw align-middle"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                            </a>
+                            <div class="d-inline-block dropdown show">
+                                <a href="https://spark.bootlab.io/dashboard-default?theme=modern#" data-bs-toggle="dropdown" data-bs-display="static">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical align-middle"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item" href="https://spark.bootlab.io/dashboard-default?theme=modern#">A-Z</a>
+                                    <a class="dropdown-item" href="https://spark.bootlab.io/dashboard-default?theme=modern#">Z-A</a>
+                                    <a class="dropdown-item" href="https://spark.bootlab.io/dashboard-default?theme=modern#">By Region</a>
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="card-title mb-0">Logs</h5>
+                    </div>
+            <div id="datatables-dashboard-projects_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6"></div>
+                    <div class="col-sm-12 col-md-6"></div>
+                </div>
+                <div class="row dt-row">
+                    <div class="col-sm-12">
+                        <table id="datatables-dashboard-projects" class="table table-striped my-0 dataTable no-footer" aria-describedby="datatables-dashboard-projects_info">
+                            <thead>
+                                <tr>
+                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="datatables-dashboard-projects" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Region Name</th>
+                                    <th class="d-none d-xl-table-cell sorting" tabindex="0" aria-controls="datatables-dashboard-projects" rowspan="1" colspan="1" aria-label="Start Date: activate to sort column ascending">VM Name</th>
+                                    <th class="d-none d-xl-table-cell sorting" tabindex="0" aria-controls="datatables-dashboard-projects" rowspan="1" colspan="1" aria-label="End Date: activate to sort column ascending">Deployed time:</th>
+                                    <th class="sorting" tabindex="0" aria-controls="datatables-dashboard-projects" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">Status</th>
+                                </tr>
+                            </thead>
+                        <tbody>
+                                <tr class="odd">
+                                    <td class="sorting_1">EU-WEST-1</td>
+                                    <td class="d-none d-xl-table-cell">Virtual_machine_1</td>
+                                    <td class="d-none d-xl-table-cell">2023/04/20</td>
+                                    <td><span class="badge bg-success">Running</span></td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="sorting_1">EU-NORTH-1</td>
+                                    <td class="d-none d-xl-table-cell">Virtual_machine_12</td>
+                                    <td class="d-none d-xl-table-cell">2024/10/12</td>
+                                    <td><span class="badge bg-danger">Stopped</span></td>
+                                </tr>
+                                <tr class="odd">
+                                    <td class="sorting_1">WEST-US-2</td>
+                                    <td class="d-none d-xl-table-cell">Virtual_machine_232</td>
+                                    <td class="d-none d-xl-table-cell">2025/01/4</td>
+                                    <td><span class="badge bg-success">Running</span></td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="sorting_1">WEST-US-2</td>
+                                    <td class="d-none d-xl-table-cell">Virtual_machine_233</td>
+                                    <td class="d-none d-xl-table-cell">2025/01/4</td>
+                                    <td><span class="badge bg-success">Running</span></td>
+                                </tr>
+                                <tr class="odd">
+                                    <td class="sorting_1">EU-WEST-1</td>
+                                    <td class="d-none d-xl-table-cell">Virtual_machine_167</td>
+                                    <td class="d-none d-xl-table-cell">2024/12/01</td>
+                                    <td><span class="badge bg-warning">Idle</span></td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="sorting_1">EU-WEST-1</td>
+                                    <td class="d-none d-xl-table-cell">Virtual_machine_30</td>
+                                    <td class="d-none d-xl-table-cell">2024/06/27</td>
+                                    <td><span class="badge bg-success">Running</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="col-12 col-lg-4 col-xxl-3 d-flex">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+                    <div class="card-actions float-end">
+                        <a href="https://spark.bootlab.io/dashboard-default?theme=modern#" class="me-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-refresh-cw align-middle"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                        </a>
+                        <div class="d-inline-block dropdown show">
+                            <a href="https://spark.bootlab.io/dashboard-default?theme=modern#" data-bs-toggle="dropdown" data-bs-display="static">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical align-middle"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="https://spark.bootlab.io/dashboard-default?theme=modern#">Action</a>
+                                <a class="dropdown-item" href="https://spark.bootlab.io/dashboard-default?theme=modern#">Another action</a>
+                                <a class="dropdown-item" href="https://spark.bootlab.io/dashboard-default?theme=modern#">Something else here</a>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="card-title mb-0">Alerts</h5>
+                </div>
+                <div class="card-body flex-fill w-100">
+                    <table class="table table-bordered table-sm w-100">
+                        <thead class="table-light">
+                          <tr>
+                            <th>VM Name</th>
+                            <th>Region</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="bg-light">
+                            <td>Virtual_machine_12</td>
+                            <td>EU-NORTH-1</td>
+                            <td>2025/03/22 11:00:23</td>
+                            <td><span class="badge bg-danger">Error</span></td>
+                          </tr>
+                          <tr>
+                            <td>Virtual_machine_67</td>
+                            <td>WEST-US-1</td>
+                            <td>2025/03/22 11:00:23</td>
+                            <td><span class="badge bg-danger">Error</span></td>
+                          </tr>
+                          <tr class="bg-light">
+                            <td>Virtual_machine_202</td>
+                            <td>EU-WEST-1</td>
+                            <td>2025/03/22 11:00:23</td>
+                            <td><span class="badge bg-danger">Error</span></td>
+                          </tr>
+                          <tr>
+                            <td>Virtual_machine_99</td>
+                            <td>ASIA-EAST-1</td>
+                            <td>2025/03/22 11:00:23</td>
+                            <td><span class="badge bg-danger">Error</span></td>
+                          </tr>
+                        </tbody>
+                      </table>     
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

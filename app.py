@@ -2,11 +2,7 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-#@app.route('/')
-#def hello_world():
-#    return render_template('base_index.html')
-
-@app.route('/monitoring')
+@app.route('/')
 def monitoring():
     return render_template('monitoring.html')
 
@@ -33,7 +29,6 @@ def settings():
 @app.route('/scripts')
 def scripts():
     return render_template('scripts.html')
-
 
 
 if __name__ == '__main__':
