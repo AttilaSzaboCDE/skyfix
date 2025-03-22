@@ -25,7 +25,7 @@ It can help you if you want to focus on hard tasks, because it can handle typica
 
 ## Features
 
-A few of the things you can do with SkyFix:
+A few things about, you can do with SkyFix:
 
 * AWS and Azure cloud system monitoring
 * Issues and Errors detecting
