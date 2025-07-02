@@ -10,17 +10,9 @@ def monitoring():
 def vm_monitoring():
     return render_template('vm_monitoring.html')
 
-@app.route('/profile')
-def profile():
-    return render_template('profile.html')
-
-@app.route('/vnet_monitoring')
-def vnet_monitoring():
-    return render_template('vnet_monitoring.html')
-
-@app.route('/stor_monitoring')
-def stor_monitoring():
-    return render_template('stor_monitoring.html')
+@app.route('/container_monitoring')
+def container_monitoring():
+    return render_template('container_monitoring.html')
 
 @app.route('/settings')
 def settings():

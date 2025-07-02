@@ -43,13 +43,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url_for('vnet_monitoring') }}" class="nav-link px-0">
-                                    <span class="d-none d-sm-inline">Virtual Network</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ url_for('stor_monitoring') }}" class="nav-link px-0">
-                                    <span class="d-none d-sm-inline">Storage</span>
+                                <a href="{{ url_for('container_monitoring') }}" class="nav-link px-0">
+                                    <span class="d-none d-sm-inline">Containers</span>
                                 </a>
                             </li>
                         </ul>
@@ -67,7 +62,6 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                         <li><a class="dropdown-item" href="{{ url_for('settings') }}">Settings</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('profile') }}">Profile</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -81,7 +75,7 @@
             {% block content %}
             Itt lesz majd a monitoring rész
             {% endblock %}
-        </div>
+        </div>s
     </div>
 </div>
 </body>
