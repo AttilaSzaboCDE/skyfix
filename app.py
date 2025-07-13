@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
+
 
 app = Flask(__name__, template_folder='template')
 
@@ -14,7 +15,7 @@ def vm_monitoring():
 def container_monitoring():
     return render_template('container_monitoring.html')
 
-@app.route('/settings')
+@app.route('/settings', methods=['GET', 'POST'])
 def settings():
     return render_template('settings.html')
 
