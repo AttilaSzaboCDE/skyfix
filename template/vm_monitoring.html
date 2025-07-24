@@ -4,8 +4,8 @@
 
 <!-- Ide jönnek a hivatkozások-->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/vm_monitoring.css') }}">
-<script src="../static/js/charts.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 <!-- Hivatkozások vége -->
 
 <div class="container my-5">
@@ -14,20 +14,20 @@
       <div class="col-12 col-md-6 col-xxl-6 mb-4">
         <div class="card shadow-sm p-3">
           <h5 class="text-center">EU North - Region</h5>
-          <canvas id="chart1"></canvas>
+          <canvas id="vm_chart"></canvas>
         </div>
       </div>
   
       <!-- Chart 2 -->
       <div class="col-12 col-md-6 col-xxl-6 mb-4">
         <div class="card shadow-sm p-3">
-          <h5 class="text-center">Issues</h5>
-          <canvas id="chart2"></canvas>
+          <h5 class="text-center"> VM Issues</h5>
+          <canvas id="vm_issues"></canvas>
         </div>
       </div>
   
     </div>
-  </div>
+</div>
 
 
 <div class="row">

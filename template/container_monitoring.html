@@ -1,8 +1,11 @@
 {% extends "base_index.html" %}
 
 {% block content %}
+
 <!-- Ide jönnek a hivatkozások-->
 <link rel="stylesheet" href="{{ url_for('static', filename='css/container_monitoring.css') }}">
+
+
 <!-- Hivatkozások vége -->
  
 <div class="container my-5">
@@ -10,21 +13,20 @@
       <!-- Chart 1 -->
       <div class="col-12 col-md-6 col-xxl-6 mb-4">
         <div class="card shadow-sm p-3">
-          <h5 class="text-center">Régió 1</h5>
-          <canvas id="chart1"></canvas>
+          <h5 class="text-center">EU North - Region</h5>
+          <canvas id="cont_chart" width="150" height="100" style="width: 150px; height: 100px;""></canvas>
         </div>
       </div>
   
       <!-- Chart 2 -->
       <div class="col-12 col-md-6 col-xxl-6 mb-4">
         <div class="card shadow-sm p-3">
-          <h5 class="text-center">Régió 2</h5>
-          <canvas id="chart2"></canvas>
+          <h5 class="text-center"> Container Issues</h5>
+          <canvas id="cont_issues"></canvas>
         </div>
       </div>
-    </div>
-  </div>
 
+</div>
 
 
 <div class="row">

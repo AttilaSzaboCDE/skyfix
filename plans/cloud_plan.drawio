@@ -1,107 +1,132 @@
 <mxfile host="65bd71144e">
     <diagram id="eITuKU6QjTm9lriLVlCQ" name="Page-1">
-        <mxGraphModel dx="1776" dy="1082" grid="0" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="none" math="0" shadow="0">
+        <mxGraphModel dx="1006" dy="722" grid="0" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="36" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="528" y="628" width="256" height="263" as="geometry"/>
+                <mxCell id="3" value="Azure Cloud" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud;strokeColor=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;" parent="1" vertex="1">
+                    <mxGeometry x="79" y="214" width="407" height="299" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="Azure Cloud" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud;strokeColor=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;" vertex="1" parent="1">
-                    <mxGeometry x="79" y="214" width="801" height="334" as="geometry"/>
-                </mxCell>
-                <mxCell id="8" value="Services" style="fillColor=#EFF0F3;strokeColor=none;dashed=0;verticalAlign=top;fontStyle=0;fontColor=#232F3D;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="8" value="Szolgáltatások" style="fillColor=#EFF0F3;strokeColor=none;dashed=0;verticalAlign=top;fontStyle=0;fontColor=#232F3D;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="40" y="40" width="349" height="147" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="App Service" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/compute/App_Services.svg;" vertex="1" parent="3">
+                <mxCell id="5" value="App Service" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/compute/App_Services.svg;" parent="3" vertex="1">
                     <mxGeometry x="79" y="84" width="43" height="43" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="VM" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/compute/Virtual_Machine.svg;" vertex="1" parent="3">
+                <mxCell id="6" value="VM" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/compute/Virtual_Machine.svg;" parent="3" vertex="1">
                     <mxGeometry x="186" y="86" width="49.6" height="46" as="geometry"/>
                 </mxCell>
-                <mxCell id="7" value="Virtual Networks" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Virtual_Networks.svg;" vertex="1" parent="3">
+                <mxCell id="7" value="Virtual Networks" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Virtual_Networks.svg;" parent="3" vertex="1">
                     <mxGeometry x="297" y="90" width="58.64" height="35" as="geometry"/>
                 </mxCell>
-                <mxCell id="11" value="Monitor" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/management_governance/Monitor.svg;" vertex="1" parent="3">
-                    <mxGeometry x="533" y="90" width="47" height="47" as="geometry"/>
+                <mxCell id="11" value="Monitor" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/management_governance/Monitor.svg;" parent="3" vertex="1">
+                    <mxGeometry x="186" y="227" width="47" height="47" as="geometry"/>
                 </mxCell>
-                <mxCell id="12" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.085;entryY=0.489;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="3" source="8" target="11">
+                <mxCell id="81" value="Entra RBAC" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/identity/Azure_AD_B2C2.svg;" vertex="1" parent="3">
+                    <mxGeometry x="102" y="227" width="51.12" height="45.44" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Docker.svg;" parent="1" vertex="1">
+                    <mxGeometry x="179" y="599" width="50" height="41" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="Grafana" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/other/Grafana.svg;" parent="1" vertex="1">
+                    <mxGeometry x="259" y="603" width="54.09" height="42" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="" style="endArrow=classic;html=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="410.5" y="253.06" as="sourcePoint"/>
-                        <mxPoint x="196" y="222.9975" as="targetPoint"/>
+                        <mxPoint x="287" y="517" as="sourcePoint"/>
+                        <mxPoint x="287" y="594" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="14" value="Monitoring the services" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="3">
-                    <mxGeometry x="393" y="88" width="130" height="18" as="geometry"/>
+                <mxCell id="51" value="Metrikák és logok küldése/ gyűjtése" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="294" y="541" width="109" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="18" value="Collect&amp;nbsp; the metrics" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="3">
-                    <mxGeometry x="578" y="83" width="130" height="18" as="geometry"/>
+                <mxCell id="53" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Docker.svg;" parent="1" vertex="1">
+                    <mxGeometry x="527" y="600" width="50" height="41" as="geometry"/>
                 </mxCell>
-                <mxCell id="22" value="Blob Storage" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Blob_Block.svg;" vertex="1" parent="3">
-                    <mxGeometry x="540" y="250" width="49.25" height="39.4" as="geometry"/>
+                <mxCell id="54" value="Webapp" style="verticalLabelPosition=bottom;aspect=fixed;html=1;shape=mxgraph.salesforce.web2;" parent="1" vertex="1">
+                    <mxGeometry x="612" y="624" width="51" height="51" as="geometry"/>
                 </mxCell>
-                <mxCell id="25" value="Event Hubs" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Event_Hubs.svg;" vertex="1" parent="3">
-                    <mxGeometry x="699" y="243" width="48" height="50" as="geometry"/>
-                </mxCell>
-                <mxCell id="16" value="" style="endArrow=classic;html=1;exitX=0.979;exitY=0.489;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="3">
+                <mxCell id="55" value="" style="endArrow=classic;html=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="589.0029999999999" y="116.00299999999993" as="sourcePoint"/>
-                        <mxPoint x="692" y="114" as="targetPoint"/>
+                        <mxPoint x="388" y="687" as="sourcePoint"/>
+                        <mxPoint x="511" y="687" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="26" value="" style="endArrow=classic;html=1;" edge="1" parent="3">
+                <mxCell id="56" value="Riasztások" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="392" y="658" width="109" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="Github" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.weblogos.github" parent="1" vertex="1">
+                    <mxGeometry x="623" y="830" width="57" height="48" as="geometry"/>
+                </mxCell>
+                <object placeholders="1" c4Name="Grafana_server" c4Type="Monitoring" c4Application="Grafana" label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;&lt;div style=&quot;text-align: left&quot;&gt;%c4Name%&lt;/div&gt;&lt;/b&gt;&lt;/font&gt;&lt;div style=&quot;text-align: left&quot;&gt;[%c4Application%]&lt;/div&gt;" id="59">
+                    <mxCell style="rounded=1;fontSize=11;whiteSpace=wrap;html=1;dashed=1;arcSize=20;fillColor=none;strokeColor=#666666;fontColor=#333333;labelBackgroundColor=none;align=left;verticalAlign=bottom;labelBorderColor=none;spacingTop=0;spacing=10;dashPattern=8 4;metaEdit=1;rotatable=0;perimeter=rectanglePerimeter;noLabel=0;labelPadding=0;allowArrows=0;connectable=0;expand=0;recursiveResize=0;editable=1;pointerEvents=0;absoluteArcSize=1;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" parent="1" vertex="1">
+                        <mxGeometry x="170" y="592" width="214" height="137" as="geometry"/>
+                    </mxCell>
+                </object>
+                <object placeholders="1" c4Name="Sr-sys" c4Type="automation" c4Application="Self-Repair system" label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;&lt;div style=&quot;text-align: left&quot;&gt;%c4Name%&lt;/div&gt;&lt;/b&gt;&lt;/font&gt;&lt;div style=&quot;text-align: left&quot;&gt;[%c4Application%]&lt;/div&gt;" id="60">
+                    <mxCell style="rounded=1;fontSize=11;whiteSpace=wrap;html=1;dashed=1;arcSize=20;fillColor=none;strokeColor=#666666;fontColor=#333333;labelBackgroundColor=none;align=left;verticalAlign=bottom;labelBorderColor=none;spacingTop=0;spacing=10;dashPattern=8 4;metaEdit=1;rotatable=0;perimeter=rectanglePerimeter;noLabel=0;labelPadding=0;allowArrows=0;connectable=0;expand=0;recursiveResize=0;editable=1;pointerEvents=0;absoluteArcSize=1;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" parent="1" vertex="1">
+                        <mxGeometry x="519" y="593" width="215" height="138" as="geometry"/>
+                    </mxCell>
+                </object>
+                <mxCell id="61" value="" style="endArrow=classic;html=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="724" y="154" as="sourcePoint"/>
-                        <mxPoint x="724" y="228" as="targetPoint"/>
+                        <mxPoint x="646" y="817" as="sourcePoint"/>
+                        <mxPoint x="646" y="743" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="27" value="Diagnostics settings" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/management_governance/Diagnostics_Settings.svg;" vertex="1" parent="3">
-                    <mxGeometry x="704" y="80" width="43" height="51.45" as="geometry"/>
+                <mxCell id="62" value="CI/CD&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="661" y="769" width="60" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="41" value="Metrics settings" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="3">
-                    <mxGeometry x="729" y="173" width="60" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="30" value="" style="endArrow=classic;html=1;" edge="1" parent="3">
+                <mxCell id="63" value="" style="endArrow=classic;html=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="698" y="268" as="sourcePoint"/>
-                        <mxPoint x="602" y="270" as="targetPoint"/>
+                        <mxPoint x="640" y="576" as="sourcePoint"/>
+                        <mxPoint x="504" y="418" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="35" value="Save Logs" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="3">
-                    <mxGeometry x="620" y="234" width="60" height="30" as="geometry"/>
+                <mxCell id="64" value="Kód / Parancs küldés" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="585" y="480" width="83" height="34" as="geometry"/>
                 </mxCell>
-                <mxCell id="21" value="Logs send to App" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="755" y="583" width="60" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="28" value="Web app" style="verticalLabelPosition=bottom;aspect=fixed;html=1;shape=mxgraph.salesforce.web2;" vertex="1" parent="1">
-                    <mxGeometry x="626" y="636" width="49" height="49" as="geometry"/>
-                </mxCell>
-                <mxCell id="29" value="" style="endArrow=classic;startArrow=classic;html=1;" edge="1" parent="1">
+                <mxCell id="65" value="" style="endArrow=classic;html=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="674" y="616" as="sourcePoint"/>
-                        <mxPoint x="788" y="561" as="targetPoint"/>
+                        <mxPoint x="505" y="714" as="sourcePoint"/>
+                        <mxPoint x="393" y="714" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="31" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                <mxCell id="66" value="sikeres javítás&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="402" y="716" width="91" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="" style="endArrow=classic;html=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="633" y="618" as="sourcePoint"/>
-                        <mxPoint x="304" y="426" as="targetPoint"/>
+                        <mxPoint x="751" y="662" as="sourcePoint"/>
+                        <mxPoint x="831" y="660" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="34" value="Azure CLI/SDK Controll" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="410" y="582" width="114" height="38" as="geometry"/>
+                <mxCell id="69" value="Sikertelen javítás" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="736" y="616" width="110" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="38" value="Running on container" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Docker.svg;" vertex="1" parent="1">
-                    <mxGeometry x="626" y="808" width="53.66" height="44" as="geometry"/>
+                <mxCell id="71" value="Jelzés az adminisztrátornak" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="762" y="675" width="60" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="39" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                <mxCell id="72" value="Adminisztrátor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="865" y="625" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="77" value="" style="endArrow=classic;startArrow=classic;html=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="651" y="796" as="sourcePoint"/>
-                        <mxPoint x="651" y="724" as="targetPoint"/>
+                        <mxPoint x="209" y="588" as="sourcePoint"/>
+                        <mxPoint x="209" y="516" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="40" value="Virtualization" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-                    <mxGeometry x="696" y="632" width="98" height="30" as="geometry"/>
+                <mxCell id="78" value="Autentikáció" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="140" y="539" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="79" value="" style="endArrow=classic;startArrow=classic;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="397" y="635" as="sourcePoint"/>
+                        <mxPoint x="503" y="633" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="80" value="Auth adatok átküldése" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="591" width="60" height="30" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
