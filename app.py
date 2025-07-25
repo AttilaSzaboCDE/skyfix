@@ -1,27 +1,28 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template
 
 
 app = Flask(__name__, template_folder='template')
 
 @app.route('/')
-def monitoring():
-    return render_template('monitoring.html')
+def base_monitor():
+    return render_template('base_monitor.html')
 
-@app.route('/vm_monitoring')
-def vm_monitoring():
-    return render_template('vm_monitoring.html')
+@app.route('/add_new_script')
+def add_new_script():
+    return render_template('add_new_script.html')
 
-@app.route('/container_monitoring')
-def container_monitoring():
-    return render_template('container_monitoring.html')
+@app.route('/manage_scripts')
+def manage_scripts():
+    return render_template('manage_scripts.html')
 
-@app.route('/settings', methods=['GET', 'POST'])
+@app.route('/delete_scripts')
+def delete_scripts():
+    return render_template('delete_scripts.html')
+
+@app.route('/settings')
 def settings():
     return render_template('settings.html')
 
-@app.route('/scripts')
-def scripts():
-    return render_template('scripts.html')
 
 
 if __name__ == '__main__':

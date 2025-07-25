@@ -31,29 +31,19 @@
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <a href="{{ url_for('monitoring') }}" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i><span class="ms-1 d-none d-sm-inline">Dashboard</span>
+                        <a href="{{ url_for('add_new_script') }}" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-terminal-dash"></i><span class="ms-1 d-none d-sm-inline">Add new Script</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                          <i class="fs-4 bi-display"></i><span class="ms-1 d-none d-sm-inline d-flex justify-content-center">Monitoring</span></a>
-                          <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="{{ url_for('vm_monitoring') }}" class="nav-link px-0">
-                                    <span class="d-none d-sm-inline">Virtual Machines</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ url_for('container_monitoring') }}" class="nav-link px-0">
-                                    <span class="d-none d-sm-inline">Containers</span>
-                                </a>
-                            </li>
-                        </ul>
+                    <li class="nav-item">
+                        <a href="{{ url_for('manage_scripts') }}" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-terminal-split"></i><span class="ms-1 d-none d-sm-inline">Manage Scripts</span>
+                        </a>
                     </li>
-                    <li>
-                        <a href="{{ url_for('scripts') }}" class="nav-link px-0 align-middle">
-                          <i class="fs-4 bi-terminal"></i><span class="ms-1 d-none d-sm-inline">Scripts</span></a>
+                    <li class="nav-item">
+                        <a href="{{ url_for('delete_scripts') }}" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-terminal-x"></i><span class="ms-1 d-none d-sm-inline">Delete Scripts</span>
+                        </a>
                     </li>
                 </ul>
                 <hr>

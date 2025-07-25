@@ -1,0 +1,261 @@
+{% extends "base_index.html" %}
+
+{% block content %}
+<!-- DataTables CSS -->
+
+<!-- Ide jönnek a hivatkozások-->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/container_monitoring.css') }}">
+
+
+<!-- Hivatkozások vége -->
+ 
+<div class="container-fluid my-5">
+  <!-- Felső rész: Középen egy kártya -->
+  <div class="row justify-content-center mb-4">
+    <div class="col-12 col-lg-10">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">Folyamatban lévő szkriptek</h5>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-hover mb-0 text-center">
+            <thead class="table-light">
+              <tr>
+                <th>Szolgáltatás neve</th>
+                <th>Régió</th>
+                <th>Script neve</th>
+                <th>Állapot</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Azure VM Monitor</td>
+                <td>EU-WEST-1</td>
+                <td>vm_status_check.sh</td>
+                <td>
+                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
+                    <span class="visually-hidden">Fut...</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Storage Checker</td>
+                <td>WEST-US-2</td>
+                <td>storage_cleaner.py</td>
+                <td>
+                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
+                    <span class="visually-hidden">Fut...</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Grafana Alert Sync</td>
+                <td>EU-NORTH-1</td>
+                <td>alert_sync.sh</td>
+                <td>
+                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
+                    <span class="visually-hidden">Fut...</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Grafana Alert Sync</td>
+                <td>EU-NORTH-1</td>
+                <td>alert_sync.sh</td>
+                <td>
+                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
+                    <span class="visually-hidden">Fut...</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Grafana Alert Sync</td>
+                <td>EU-NORTH-1</td>
+                <td>alert_sync.sh</td>
+                <td>
+                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
+                    <span class="visually-hidden">Fut...</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Grafana Alert Sync</td>
+                <td>EU-NORTH-1</td>
+                <td>alert_sync.sh</td>
+                <td>
+                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
+                    <span class="visually-hidden">Fut...</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Grafana Alert Sync</td>
+                <td>EU-NORTH-1</td>
+                <td>alert_sync.sh</td>
+                <td>
+                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
+                    <span class="visually-hidden">Fut...</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Grafana Alert Sync</td>
+                <td>EU-NORTH-1</td>
+                <td>alert_sync.sh</td>
+                <td>
+                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
+                    <span class="visually-hidden">Fut...</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Grafana Alert Sync</td>
+                <td>EU-NORTH-1</td>
+                <td>alert_sync.sh</td>
+                <td>
+                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
+                    <span class="visually-hidden">Fut...</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alsó rész: Logs és Alerts kártyák egymás mellett -->
+  <div class="row">
+    <!-- Alerts -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow">
+        <div class="card-header bg-danger text-white">
+          <h5 class="mb-0">Alerts</h5>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped mb-0 text-center">
+            <thead>
+              <tr>
+                <th>VNET Name</th>
+                <th>Region</th>
+                <th>Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Container_1</td>
+                <td>EU-NORTH-1</td>
+                <td>2025/03/22 11:00:23</td>
+                <td><span class="badge bg-danger">Down</span></td>
+              </tr>
+              <tr>
+                <td>Container_2</td>
+                <td>EU-NORTH-1</td>
+                <td>2025/03/22 11:00:23</td>
+                <td><span class="badge bg-danger">Down</span></td>
+              </tr>
+              <tr>
+                <td>Container_3</td>
+                <td>EU-NORTH-1</td>
+                <td>2025/03/22 11:00:23</td>
+                <td><span class="badge bg-danger">Down</span></td>
+              </tr>
+              <tr>
+                <td>Container_4</td>
+                <td>EU-NORTH-1</td>
+                <td>2025/03/22 11:00:23</td>
+                <td><span class="badge bg-danger">Down</span></td>
+              </tr>
+              <tr>
+                <td>Container_5</td>
+                <td>EU-NORTH-1</td>
+                <td>2025/03/22 11:00:23</td>
+                <td><span class="badge bg-danger">Down</span></td>
+              </tr>
+              <tr>
+                <td>Container_6</td>
+                <td>EU-NORTH-1</td>
+                <td>2025/03/22 11:00:23</td>
+                <td><span class="badge bg-danger">Down</span></td>
+              </tr>
+              <tr>
+                <td>Container_7</td>
+                <td>EU-NORTH-1</td>
+                <td>2025/03/22 11:00:23</td>
+                <td><span class="badge bg-danger">Down</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Logs -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow">
+        <div class="card-header bg-secondary text-white">
+          <h5 class="mb-0">Logs</h5>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped mb-0 text-center">
+            <thead>
+              <tr>
+                <th>Region Name</th>
+                <th>VNET Name</th>
+                <th>Usage</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>EU-WEST-1</td>
+                <td>Container_1</td>
+                <td class="text-success">55.4%</td>
+                <td><span class="badge bg-success">Fine</span></td>
+              </tr>
+              <tr>
+                <td>EU-NORTH-1</td>
+                <td>Container_2</td>
+                <td class="text-warning">85%</td>
+                <td><span class="badge bg-warning">On Pressure</span></td>
+              </tr>
+              <tr>
+                <td>WEST-US-2</td>
+                <td>Container_3</td>
+                <td class="text-danger">95.4%</td>
+                <td><span class="badge bg-danger">Overloaded</span></td>
+              </tr>
+              <tr>
+                <td>WEST-US-2</td>
+                <td>Container_4</td>
+                <td class="text-danger">95.4%</td>
+                <td><span class="badge bg-danger">Overloaded</span></td>
+              </tr>
+              <tr>
+                <td>WEST-US-2</td>
+                <td>Container_5</td>
+                <td class="text-danger">95.4%</td>
+                <td><span class="badge bg-danger">Overloaded</span></td>
+              </tr>
+              <tr>
+                <td>WEST-US-2</td>
+                <td>Container_6</td>
+                <td class="text-danger">95.4%</td>
+                <td><span class="badge bg-danger">Overloaded</span></td>
+              </tr>
+              <tr>
+                <td>WEST-US-2</td>
+                <td>Container_7</td>
+                <td class="text-danger">95.4%</td>
+                <td><span class="badge bg-danger">Overloaded</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
