@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="eITuKU6QjTm9lriLVlCQ" name="Page-1">
-        <mxGraphModel dx="1006" dy="722" grid="0" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="none" math="0" shadow="0">
+        <mxGraphModel dx="1812" dy="1082" grid="0" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -22,7 +22,7 @@
                 <mxCell id="11" value="Monitor" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/management_governance/Monitor.svg;" parent="3" vertex="1">
                     <mxGeometry x="186" y="227" width="47" height="47" as="geometry"/>
                 </mxCell>
-                <mxCell id="81" value="Entra RBAC" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/identity/Azure_AD_B2C2.svg;" vertex="1" parent="3">
+                <mxCell id="81" value="Entra RBAC" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/identity/Azure_AD_B2C2.svg;" parent="3" vertex="1">
                     <mxGeometry x="102" y="227" width="51.12" height="45.44" as="geometry"/>
                 </mxCell>
                 <mxCell id="47" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Docker.svg;" parent="1" vertex="1">
@@ -86,26 +86,17 @@
                 <mxCell id="64" value="Kód / Parancs küldés" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="585" y="480" width="83" height="34" as="geometry"/>
                 </mxCell>
-                <mxCell id="65" value="" style="endArrow=classic;html=1;" parent="1" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="505" y="714" as="sourcePoint"/>
-                        <mxPoint x="393" y="714" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="66" value="sikeres javítás&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="402" y="716" width="91" height="30" as="geometry"/>
-                </mxCell>
                 <mxCell id="67" value="" style="endArrow=classic;html=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="751" y="662" as="sourcePoint"/>
-                        <mxPoint x="831" y="660" as="targetPoint"/>
+                        <mxPoint x="750" y="650" as="sourcePoint"/>
+                        <mxPoint x="832" y="650" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="69" value="Sikertelen javítás" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                <mxCell id="69" value="Sikertelen / sikeres javítás" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="736" y="616" width="110" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="71" value="Jelzés az adminisztrátornak" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="762" y="675" width="60" height="30" as="geometry"/>
+                    <mxGeometry x="757" y="656" width="60" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="72" value="Adminisztrátor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
                     <mxGeometry x="865" y="625" width="30" height="60" as="geometry"/>
