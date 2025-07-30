@@ -140,51 +140,38 @@
                 <th>VNET Name</th>
                 <th>Region</th>
                 <th>Time</th>
-                <th>Status</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Container_1</td>
+                <td>C-HU-02</td>
                 <td>EU-NORTH-1</td>
                 <td>2025/03/22 11:00:23</td>
-                <td><span class="badge bg-danger">Down</span></td>
               </tr>
               <tr>
-                <td>Container_2</td>
+                <td>D-S-HU-123</td>
                 <td>EU-NORTH-1</td>
                 <td>2025/03/22 11:00:23</td>
-                <td><span class="badge bg-danger">Down</span></td>
               </tr>
               <tr>
-                <td>Container_3</td>
+                <td>D-S-HU-111</td>
                 <td>EU-NORTH-1</td>
                 <td>2025/03/22 11:00:23</td>
-                <td><span class="badge bg-danger">Down</span></td>
               </tr>
               <tr>
-                <td>Container_4</td>
+                <td>C-HU-04</td>
                 <td>EU-NORTH-1</td>
                 <td>2025/03/22 11:00:23</td>
-                <td><span class="badge bg-danger">Down</span></td>
               </tr>
               <tr>
-                <td>Container_5</td>
+                <td>D-S-HU-456</td>
                 <td>EU-NORTH-1</td>
                 <td>2025/03/22 11:00:23</td>
-                <td><span class="badge bg-danger">Down</span></td>
               </tr>
               <tr>
-                <td>Container_6</td>
+                <td>C-HU-06</td>
                 <td>EU-NORTH-1</td>
                 <td>2025/03/22 11:00:23</td>
-                <td><span class="badge bg-danger">Down</span></td>
-              </tr>
-              <tr>
-                <td>Container_7</td>
-                <td>EU-NORTH-1</td>
-                <td>2025/03/22 11:00:23</td>
-                <td><span class="badge bg-danger">Down</span></td>
               </tr>
             </tbody>
           </table>
@@ -196,60 +183,49 @@
     <div class="col-md-6 mb-4">
       <div class="card shadow">
         <div class="card-header bg-secondary text-white">
-          <h5 class="mb-0">Logs</h5>
+          <h5 class="mb-0">Scripts Logs</h5>
         </div>
         <div class="card-body p-0">
           <table class="table table-striped mb-0 text-center">
             <thead>
               <tr>
-                <th>Region Name</th>
-                <th>VNET Name</th>
-                <th>Usage</th>
+                <th>Script name</th>
+                <th>Service name</th>
                 <th>Status</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>EU-WEST-1</td>
-                <td>Container_1</td>
-                <td class="text-success">55.4%</td>
-                <td><span class="badge bg-success">Fine</span></td>
+                <td>vm_status_check.sh</td>
+                <td>C-HU-233</td>
+                <!-- Ez pedig a nem sikeresen lefutott szkript -->
+                <td><div class="d-inline-flex align-items-center justify-content-center bg-danger rounded-circle text-white" style="width: 1.5rem; height: 1.5rem; font-size: 1rem;">✕</div></td>
               </tr>
               <tr>
-                <td>EU-NORTH-1</td>
-                <td>Container_2</td>
-                <td class="text-warning">85%</td>
-                <td><span class="badge bg-warning">On Pressure</span></td>
+                <td>vm_scaling.py</td>
+                <td>D-S-HU-02</td>
+                <!-- Ez a sikeresen lefutott szkript -->
+                <td><div class="d-inline-flex align-items-center justify-content-center bg-success rounded-circle text-white" style="width: 1.5rem; height: 1.5rem; font-size: 1rem;">✓</div></td>
               </tr>
               <tr>
-                <td>WEST-US-2</td>
-                <td>Container_3</td>
-                <td class="text-danger">95.4%</td>
-                <td><span class="badge bg-danger">Overloaded</span></td>
+                <td>vm_downscaling.py</td>
+                <td>D-S-HU-15</td>
+                <td><div class="d-inline-flex align-items-center justify-content-center bg-success rounded-circle text-white" style="width: 1.5rem; height: 1.5rem; font-size: 1rem;">✓</div></td>
               </tr>
               <tr>
-                <td>WEST-US-2</td>
-                <td>Container_4</td>
-                <td class="text-danger">95.4%</td>
-                <td><span class="badge bg-danger">Overloaded</span></td>
+                <td>vm_downscaling.py</td>
+                <td>D-S-HU-24</td>
+                <td><div class="d-inline-flex align-items-center justify-content-center bg-success rounded-circle text-white" style="width: 1.5rem; height: 1.5rem; font-size: 1rem;">✓</div></td>
               </tr>
               <tr>
-                <td>WEST-US-2</td>
-                <td>Container_5</td>
-                <td class="text-danger">95.4%</td>
-                <td><span class="badge bg-danger">Overloaded</span></td>
+                <td>container_image_create.py</td>
+                <td>C-HU-112</td>
+                <td><div class="d-inline-flex align-items-center justify-content-center bg-danger rounded-circle text-white" style="width: 1.5rem; height: 1.5rem; font-size: 1rem;">✕</div></td>
               </tr>
               <tr>
-                <td>WEST-US-2</td>
-                <td>Container_6</td>
-                <td class="text-danger">95.4%</td>
-                <td><span class="badge bg-danger">Overloaded</span></td>
-              </tr>
-              <tr>
-                <td>WEST-US-2</td>
-                <td>Container_7</td>
-                <td class="text-danger">95.4%</td>
-                <td><span class="badge bg-danger">Overloaded</span></td>
+                <td>vm_storage_add.py</td>
+                <td>D-S-HU-10</td>
+                <td><div class="d-inline-flex align-items-center justify-content-center bg-danger rounded-circle text-white" style="width: 1.5rem; height: 1.5rem; font-size: 1rem;">✕</div></td>
               </tr>
             </tbody>
           </table>
