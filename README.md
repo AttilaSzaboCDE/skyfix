@@ -42,5 +42,9 @@ A few things about, you can do with SkyFix:
 * **Database** - ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
 * **Scripts** - ![Bash Script](https://img.shields.io/badge/bash_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)
 
+## Picture of Fixing Dashboard
+<img width="3644" height="2208" alt="image" src="https://github.com/user-attachments/assets/96ac1d2b-df13-4a9c-9124-54c7bb5ee307" />
+
+
 
 
