@@ -43,7 +43,8 @@ A few things about, you can do with SkyFix:
 * **Scripts** - ![Bash Script](https://img.shields.io/badge/bash_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)
 
 ## Picture of Fixing Dashboard
-<img width="3644" height="2208" alt="image" src="https://github.com/user-attachments/assets/96ac1d2b-df13-4a9c-9124-54c7bb5ee307" />
+<img width="3644" height="2208" alt="image" src="https://github.com/user-attachments/assets/1cfd656d-328f-4129-a52e-8cf61e85172d" />
+
 
 
 
