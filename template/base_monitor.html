@@ -28,96 +28,20 @@
               </tr>
             </thead>
             <tbody>
+              <!-- Itt jelennek meg a futó szkriptek -->
+              
+              <!--
               <tr>
-                <td>Azure VM Monitor</td>
-                <td>EU-WEST-1</td>
-                <td>vm_status_check.sh</td>
+                <td></td>
+                <td>--</td> <!-- Ha van régió az alertben, ide teheted 
+                <td>alert_handler.py</td>
                 <td>
-                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
-                    <span class="visually-hidden">Fut...</span>
-                  </div>
+                <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
+                <span class="visually-hidden">Fut...</span>
+                </div>
                 </td>
               </tr>
-              <tr>
-                <td>Storage Checker</td>
-                <td>WEST-US-2</td>
-                <td>storage_cleaner.py</td>
-                <td>
-                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
-                    <span class="visually-hidden">Fut...</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Grafana Alert Sync</td>
-                <td>EU-NORTH-1</td>
-                <td>alert_sync.sh</td>
-                <td>
-                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
-                    <span class="visually-hidden">Fut...</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Grafana Alert Sync</td>
-                <td>EU-NORTH-1</td>
-                <td>alert_sync.sh</td>
-                <td>
-                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
-                    <span class="visually-hidden">Fut...</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Grafana Alert Sync</td>
-                <td>EU-NORTH-1</td>
-                <td>alert_sync.sh</td>
-                <td>
-                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
-                    <span class="visually-hidden">Fut...</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Grafana Alert Sync</td>
-                <td>EU-NORTH-1</td>
-                <td>alert_sync.sh</td>
-                <td>
-                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
-                    <span class="visually-hidden">Fut...</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Grafana Alert Sync</td>
-                <td>EU-NORTH-1</td>
-                <td>alert_sync.sh</td>
-                <td>
-                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
-                    <span class="visually-hidden">Fut...</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Grafana Alert Sync</td>
-                <td>EU-NORTH-1</td>
-                <td>alert_sync.sh</td>
-                <td>
-                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
-                    <span class="visually-hidden">Fut...</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Grafana Alert Sync</td>
-                <td>EU-NORTH-1</td>
-                <td>alert_sync.sh</td>
-                <td>
-                  <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
-                    <span class="visually-hidden">Fut...</span>
-                  </div>
-                </td>
-              </tr>
+              -->
             </tbody>
           </table>
         </div>
@@ -143,36 +67,13 @@
               </tr>
             </thead>
             <tbody>
+             {% for alert in alerts %}
               <tr>
-                <td>C-HU-02</td>
-                <td>EU-NORTH-1</td>
-                <td>2025/03/22 11:00:23</td>
+                <td>{{ alert[0] }}</td>  <!-- Service Name -->
+                <td>--</td>  <!-- Region -->
+                <td>{{ alert[1] }}</td>  <!-- Time -->
               </tr>
-              <tr>
-                <td>D-S-HU-123</td>
-                <td>EU-NORTH-1</td>
-                <td>2025/03/22 11:00:23</td>
-              </tr>
-              <tr>
-                <td>D-S-HU-111</td>
-                <td>EU-NORTH-1</td>
-                <td>2025/03/22 11:00:23</td>
-              </tr>
-              <tr>
-                <td>C-HU-04</td>
-                <td>EU-NORTH-1</td>
-                <td>2025/03/22 11:00:23</td>
-              </tr>
-              <tr>
-                <td>D-S-HU-456</td>
-                <td>EU-NORTH-1</td>
-                <td>2025/03/22 11:00:23</td>
-              </tr>
-              <tr>
-                <td>C-HU-06</td>
-                <td>EU-NORTH-1</td>
-                <td>2025/03/22 11:00:23</td>
-              </tr>
+            {% endfor %}
             </tbody>
           </table>
         </div>
