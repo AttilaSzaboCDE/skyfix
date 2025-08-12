@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="eITuKU6QjTm9lriLVlCQ" name="Page-1">
-        <mxGraphModel dx="1812" dy="1082" grid="0" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="none" math="0" shadow="0">
+        <mxGraphModel dx="901" dy="799" grid="0" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -48,12 +48,12 @@
                 </mxCell>
                 <mxCell id="55" value="" style="endArrow=classic;html=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="388" y="687" as="sourcePoint"/>
-                        <mxPoint x="511" y="687" as="targetPoint"/>
+                        <mxPoint x="391" y="671" as="sourcePoint"/>
+                        <mxPoint x="514" y="671" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="56" value="Riasztások" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="392" y="658" width="109" height="30" as="geometry"/>
+                    <mxGeometry x="395" y="637" width="109" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="58" value="Github" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.weblogos.github" parent="1" vertex="1">
                     <mxGeometry x="623" y="830" width="57" height="48" as="geometry"/>
@@ -109,15 +109,6 @@
                 </mxCell>
                 <mxCell id="78" value="Autentikáció" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="140" y="539" width="60" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="79" value="" style="endArrow=classic;startArrow=classic;html=1;" parent="1" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="397" y="635" as="sourcePoint"/>
-                        <mxPoint x="503" y="633" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="80" value="Auth adatok átküldése" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="420" y="591" width="60" height="30" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

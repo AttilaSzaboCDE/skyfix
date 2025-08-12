@@ -14,10 +14,9 @@ services:
 
   flaskapp:
     build: .
-    ports:
-      - "5001:5000"      
     container_name: flaskapp
-    restart: always
+    ports:
+      - "5002:5000"
 
 volumes:
   grafana-storage:

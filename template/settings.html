@@ -1,0 +1,18 @@
+{% extends "base_index.html" %}
+
+{% block content %}
+<h2>Válaszd ki az előfizetésed</h2>
+
+<form method="post">
+  <label for="subscription">Válassz előfizetést:</label>
+  <select name="subscription" id="subscription">
+    {% for sub in subscriptions %}
+      <option value="{{ sub.subscription_id }}">
+        {{ sub.display_name }} ({{ sub.subscription_id }})
+      </option>
+    {% endfor %}
+  </select>
+  <button type="submit">Mentés</button>
+</form>
+
+{% endblock %}

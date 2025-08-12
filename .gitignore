@@ -1,4 +1,6 @@
 myvenv
 quserinfo.py
-VM-SZA-test1_key.pem
-autentication.json 
+*.pem
+autentication.json
+random.json
+ 
