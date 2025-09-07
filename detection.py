@@ -7,6 +7,9 @@ from automated.vm.storage_attach import storage_attach
 from automated.vm.storage_attach import *
 from automated.vm.vm_restart import vm_restart
 from automated.vm.vm_restart import *
+from automated.vm.scale_up import vm_scale_up
+from automated.vm.scale_up import *
+
 
 # Globális változók
 
@@ -81,6 +84,16 @@ def fault_type_choose(alert_status, sub_id, az_tenant_id, az_client_id, az_clien
         #
         #
         #
+    elif alert_reason == "memoryusage":
+        date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        running_item = [resourcename, date_time, "scale_up"]
+        running_list.append(running_item)
+        memory_state = vm_scale_up(resourcename, azure_credential_tenant_id, azure_credential_client_id, azure_credential_secret_key, azure_credential_sub_id)
+        if memory_state == 0:
+            running_list.remove(running_item)
+            results_list.append(["storage_a ttach", resourcename, True])
+        else:
+            results_list.append(["storage_attach", resourcename, False])
     elif alert_reason == "vmstopped":
         date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         running_item = [resourcename, date_time, "vm_restart"]

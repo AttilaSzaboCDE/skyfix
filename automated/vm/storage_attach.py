@@ -57,7 +57,6 @@ def storage_attach(vm_name: str, tenant_id: str, client_id: str, client_secret: 
     # VM lekérése
     vm = compute_client.virtual_machines.get(resource_group, vm_name)
     
-    
     # LUN megadása
     lun = 0
     if vm.storage_profile.data_disks:
