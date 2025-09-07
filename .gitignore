@@ -1,1 +1,7 @@
+app.py
 myvenv
+quserinfo.py
+*.pem
+autentication.json
+random.json
+ 

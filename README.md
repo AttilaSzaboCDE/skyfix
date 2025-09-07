@@ -27,14 +27,14 @@ It can help you if you want to focus on hard tasks, because it can handle typica
 
 A few things about, you can do with SkyFix:
 
-* AWS and Azure cloud system monitoring
+* Azure cloud system monitoring
 * Issues and Errors detecting
 * Automated scripts running
 * Self-Repair mode
 * Errors ranking
 
 ## Technology
-* **Cloud** - ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white) ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+* **Cloud** - ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
 * **CI/CD** - ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 * **Framework** - ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
 * **Back-end** - ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
