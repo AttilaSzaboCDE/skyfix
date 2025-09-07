@@ -2,14 +2,13 @@ import secrets
 from flask import Flask, flash, redirect, render_template, request, session, url_for, jsonify
 from azure.identity import ClientSecretCredential
 from azure.mgmt.resource import SubscriptionClient
-import threading
-import datetime
 from detection import *
 
 
 app = Flask(__name__, template_folder='template')
 
 app.secret_key = secrets.token_hex(16)
+
 
 # Globális változó, hogy minden route elérje
 azure_credentials = {
@@ -18,8 +17,9 @@ azure_credentials = {
     "client_secret": None
 }
 
-
-# Előfizetések lista session-be mentése
+tenant_id = None
+client_id = None
+client_secret = None
 
 
 def login_required(f):
@@ -30,33 +30,30 @@ def login_required(f):
     wrapper.__name__ = f.__name__  # Flask kompatibilitás miatt
     return wrapper
 
-
-
 @app.route('/')
 @login_required
 def base_monitor():
-
-    return render_template('base_monitor.html', alerts=alert_list)
+    return render_template('base_monitor.html', alerts=alert_list, runnings=running_list, results=results_list)
 
 @app.route('/alert', methods=['POST'])
 def handle_alert():
     data = request.json
-    results = detection_check(data)
-    print(f"Resource Name: {results}")
-    #print(data)
+    results = detection_check(data, selected_sub, tenant_id, client_id, client_secret)
+    # print(f"Resource Name: {data}")
+    # print(data)
     return "OK", 200
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    global azure_credentials
+    global azure_credentials, client_id, client_secret, tenant_id
     global subs
 
     if request.method == "POST":
         tenant_id = request.form.get("directoryid")
         client_id = request.form.get("applicationid")
         client_secret = request.form.get("clientsecretval")
-
+        
         try:
             # Azure hitelesítés
             credential = ClientSecretCredential(
@@ -72,7 +69,7 @@ def login():
                 azure_credentials["tenant_id"] = tenant_id
                 azure_credentials["client_id"] = client_id
                 azure_credentials["client_secret"] = client_secret
-
+                
                 # Session bejelentkezés jelzés
                 session["logged_in"] = True
 
@@ -95,13 +92,8 @@ def settings():
         selected_sub = request.form.get('subscription')
         session['selected_subscription'] = selected_sub
         return redirect(url_for('base_monitor'))
-    
-    print("Előfizetések száma:", len(subs))
-    for sub in subs:
-        print(f"Subscription ID: {sub.subscription_id}, Name: {sub.display_name}")
- 
-    return render_template('settings.html', subscriptions=subs)
-
+     
+    return render_template('settings.html', subscriptions=subs, selected_sub=session.get('selected_subscription'))
 
 
 @app.route('/add_new_script')
@@ -118,8 +110,6 @@ def manage_scripts():
 @login_required
 def delete_scripts():
     return render_template('delete_scripts.html')
-
-
 
 
 if __name__ == '__main__':
