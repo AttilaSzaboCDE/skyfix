@@ -34,9 +34,6 @@ def stop_vm_by_name(vm_name: str, tenant_id: str, client_id: str, client_secret:
     resource_group = vm_resource.id.split("/")[4]
     subscription_id = vm_resource.id.split("/")[2]
 
-    # print(f"VM megtalálva: {vm_resource.name}")
-    # print(f"Resource Group: {resource_group}")
-    # print(f"Subscription: {subscription_id}")
 
     compute_client = ComputeManagementClient(credential, subscription_id)
 
