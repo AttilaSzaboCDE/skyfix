@@ -7,15 +7,6 @@
 <p align="center">
   Cloud is on your under control.
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Features](#features)
-- [Technology](#technology)
-- [Build Process](#build-process)
-- [Feedback](#feedback)
-
-
 ## Introduction
 
 This is a Cloud tool for DevOps/Cloud Engineers and Operations team members.
@@ -31,7 +22,6 @@ A few things about, you can do with SkyFix:
 * Issues and Errors detecting
 * Automated scripts running
 * Self-Repair mode
-* Errors ranking
 
 ## Technology
 * **Cloud** - ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
