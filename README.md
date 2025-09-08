@@ -43,8 +43,9 @@ A few things about, you can do with SkyFix:
 * **Scripts** - ![Bash Script](https://img.shields.io/badge/bash_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)
 
 ## Picture of Fixing Dashboard
-<img width="3644" height="2208" alt="image" src="https://github.com/user-attachments/assets/1cfd656d-328f-4129-a52e-8cf61e85172d" />
-
+<img width="1920" height="1080" alt="Képernyőfotó 2025-09-08 - 21 04 22" src="https://github.com/user-attachments/assets/fe3082ae-ed0c-4586-806a-24b8dbb1d692" />
+<img width="1920" height="1080" alt="Képernyőfotó 2025-09-08 - 21 04 55" src="https://github.com/user-attachments/assets/13a41b65-4d86-4a41-a419-a8be1da2110d" />
+<img width="1920" height="1080" alt="Képernyőfotó 2025-09-08 - 21 06 13" src="https://github.com/user-attachments/assets/599857e8-52f1-477a-b3ee-1cd9672bc5af" />
 
 
 
