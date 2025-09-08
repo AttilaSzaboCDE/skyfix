@@ -33,7 +33,7 @@ def login_required(f):
 @app.route('/')
 @login_required
 def base_monitor():
-    return render_template('base_monitor.html', alerts=alert_list, runnings=running_list, results=results_list)
+    return render_template('base_monitor.html', alerts=alert_list, runnings=running_list, results=results_list, missing_list=missing_list)
 
 @app.route('/alert', methods=['POST'])
 def handle_alert():
@@ -75,10 +75,10 @@ def login():
 
                 return redirect(url_for("base_monitor"))
             else:
-                return render_template("login.html", error="Nincs elérhető előfizetés!")
+                return render_template("login.html", error="There are no subscriptions!")
 
         except Exception as e:
-            return render_template("login.html", error=f"Hiba: {str(e)}")
+            return render_template("login.html", error=f"Error: your credentials are not correct!")
 
     return render_template("login.html")
 
@@ -96,6 +96,7 @@ def settings():
     return render_template('settings.html', subscriptions=subs, selected_sub=session.get('selected_subscription'))
 
 
+### Incoming features
 @app.route('/add_new_script')
 @login_required
 def add_new_script():

@@ -10,19 +10,20 @@
 <!-- Hivatkozások vége -->
  
 <div class="container-fluid my-5">
-  <!-- Felső rész: Középen egy kártya -->
-  <div class="row justify-content-center mb-4">
-    <div class="col-12 col-lg-10">
+  <!-- Felső rész: Két kártya egymás mellett -->
+  <div class="row mb-4">
+    <!-- Running Scripts -->
+    <div class="col-md-6 mb-4">
       <div class="card shadow">
         <div class="card-header bg-primary text-white">
-          <h5 class="mb-0">Running scripts</h5>
+          <h5 class="mb-0">Running Scripts</h5>
         </div>
         <div class="card-body p-0">
           <table class="table table-hover mb-0 text-center">
             <thead class="table-light">
               <tr>
                 <th>Service name</th>
-                <th>Region</th>
+                <th>Issue type</th>
                 <th>Script name</th>
                 <th>Status</th>
               </tr>
@@ -30,9 +31,9 @@
             <tbody>
               {% for script in runnings %}
               <tr>
-                <td>{{ script[0] }}</td>  <!-- Service Name -->
-                <td> -- </td>  <!-- Region -->
-                <td>{{ script[2] }}</td>  <!-- Script Name -->
+                <td>{{ script[0] }}</td>  <!-- Service name -->
+                <td>{{ script[1] }}</td>  <!-- Issue type -->
+                <td>{{ script[2] }}</td>  <!-- Script name -->
                 <td>
                   <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
                     <span class="visually-hidden">Fut...</span>
@@ -40,20 +41,35 @@
                 </td>
               </tr>
               {% endfor %}  
-              <!-- Itt jelennek meg a futó szkriptek -->
-              
-              <!--
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Új tábla: More Scripts -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow">
+        <div class="card-header bg-info text-white">
+          <h5 class="mb-0">Doesnt solved alerts</h5>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-hover mb-0 text-center">
+            <thead class="table-light">
               <tr>
-                <td></td>
-                <td>--</td> <!-- Ha van régió az alertben, ide teheted 
-                <td>alert_handler.py</td>
-                <td>
-                <div class="spinner-border text-warning" role="status" style="width: 1.2rem; height: 1.2rem;">
-                <span class="visually-hidden">Fut...</span>
-                </div>
-                </td>
+                <th>Script ID</th>
+                <th>Description</th>
+                <th>Status</th>
               </tr>
-              -->
+            </thead>
+            <tbody>
+              {% for item in missing_list %}
+              <tr>
+                <td>{{ item[0] }}</td>
+                <td>{{ item[1] }}</td>
+                <td>{{ item[2] }}</td>
+              </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>
@@ -73,17 +89,17 @@
           <table class="table table-striped mb-0 text-center">
             <thead>
               <tr>
-                <th>Service Name</th>
-                <th>Region</th>
+                <th>Service name</th>
+                <th>Issue type</th>
                 <th>Time</th>
               </tr>
             </thead>
             <tbody>
              {% for alert in alerts %}
               <tr>
-                <td>{{ alert[0] }}</td>  <!-- Service Name -->
-                <td>--</td>  <!-- Region -->
-                <td>{{ alert[1] }}</td>  <!-- Time -->
+                <td>{{ alert[0] }}</td>  <!-- Service name -->
+                <td>{{ alert[1] }}</td>  <!-- Issue type -->
+                <td>{{ alert[2] }}</td>  <!-- Time -->
               </tr>
             {% endfor %}
             </tbody>

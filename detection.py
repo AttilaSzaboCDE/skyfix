@@ -16,6 +16,7 @@ from automated.vm.scale_up import *
 alert_list = []             # alert logs
 running_list = []           # running scripts logs
 results_list = []           # results of running scripts
+missing_list = []           # missing scripts logs
 
 def detection_check(alert_json, sub_id, az_tenant_id, az_client_id, az_client_secret):
     global resourcename, alert_type, alert_status
@@ -27,7 +28,7 @@ def detection_check(alert_json, sub_id, az_tenant_id, az_client_id, az_client_se
     resourcename = alert_json["alerts"][0]["labels"]["resourceName"]
     alert_status = alert_json["alerts"][0]["labels"]["reason"]
     time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    alert_list.append([resourcename, time])
+    alert_list.append([resourcename, alert_status,time])
     
     
     # find the output in the alert_json
@@ -52,10 +53,10 @@ def fault_type_choose(alert_status, sub_id, az_tenant_id, az_client_id, az_clien
         return 0
 
     
-    ### Separator for different alert reasons
+    ### Separator for different alert reasons - VIRTUAL MACHINES
     if alert_reason == "highcpu":
         date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        running_item = [resourcename, date_time, "stop_vm_by_name"]  # <-- elmentjük
+        running_item = [resourcename, alert_status,date_time, "stop_vm_by_name"]  # <-- elmentjük
         running_list.append(running_item)
         vm_state = stop_vm_by_name(resourcename, azure_credential_tenant_id, azure_credential_client_id, azure_credential_secret_key, azure_credential_sub_id)
         if vm_state == 0:
@@ -74,16 +75,6 @@ def fault_type_choose(alert_status, sub_id, az_tenant_id, az_client_id, az_clien
             results_list.append(["storage_a ttach", resourcename, True])
         else:
             results_list.append(["storage_attach", resourcename, False])
-        
-    elif alert_reason == "backupfailed":
-        date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        running_item = [resourcename, date_time, "create_backup"]
-        running_list.append(running_item)
-        ## ide jön majd a backup függvény
-        # if-fel egy visszaigazolás
-        #
-        #
-        #
     elif alert_reason == "memoryusage":
         date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         running_item = [resourcename, date_time, "scale_up"]
@@ -104,6 +95,19 @@ def fault_type_choose(alert_status, sub_id, az_tenant_id, az_client_id, az_clien
             results_list.append(["vm_restart", resourcename, True])
         else:
             results_list.append(["vm_restart", resourcename, False])
+    else:
+        date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        running_item = [resourcename, date_time, "vm_restart"]
+        missing_list.append(running_item)
+    
+    # Separator for different alert reasons - CONTAINERS
+    if alert_reason == "cont_highcpu":
+        date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        running_item = [resourcename, date_time, "stop_vm_by_name"]  # <-- elmentjük
+        
+        
+
+    
     
     return 0
 
