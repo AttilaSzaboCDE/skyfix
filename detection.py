@@ -27,13 +27,15 @@ def detection_check(alert_json, sub_id, az_tenant_id, az_client_id, az_client_se
     
     resourcename = alert_json["alerts"][0]["labels"]["resourceName"]
     alert_status = alert_json["alerts"][0]["labels"]["reason"]
-    time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    alert_list.append([resourcename, alert_status,time])
+    #time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    #alert_list.append([resourcename, alert_status,time])
     
     
     # find the output in the alert_json
     alert_type = alert_json["status"]
     if alert_type == "firing":
+        time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        alert_list.append([resourcename, alert_status,time])
         fault_type_choose(alert_status,azure_credential_sub_id, azure_credential_tenant_id, azure_credential_client_id, azure_credential_secret_key)
     return 0
 
