@@ -23,7 +23,7 @@ def vm_scale_up(vm_name: str, tenant_id: str, client_id: str, client_secret: str
             break
     if not vm_resource:
         print(f"Nem található VM a '{vm_name}' névvel.")
-        return
+        return 5
     
     resource_group = vm_resource.id.split("/")[4]
     subscription_id = vm_resource.id.split("/")[2]
