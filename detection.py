@@ -21,8 +21,8 @@ missing_list = []           # missing scripts logs
 
 
 # database connection
-conn = connect(database_name)
-cur = conn.cursor()
+conn2 = connect(database_name)
+cur1 = conn2.cursor()
 
 
 def detection_check(alert_json, sub_id, az_tenant_id, az_client_id, az_client_secret):
@@ -41,8 +41,8 @@ def detection_check(alert_json, sub_id, az_tenant_id, az_client_id, az_client_se
     if alert_type == "firing":
         time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         alert_list.append([resourcename, alert_status, time])
-        cur.execute("INSERT INTO alerts_list (service_name, issue_type, timestamp) VALUES (?, ?, ?)", (resourcename, alert_status, time))
-        conn.commit()
+        cur1.execute("INSERT INTO alerts_list (service_name, issue_type, timestamp) VALUES (?, ?, ?)", (resourcename, alert_status, time))
+        conn2.commit()
         #### TEST #####
         cur.execute("SELECT * FROM alerts_list")
         rows = cur.fetchall()
