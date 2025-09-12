@@ -1,4 +1,4 @@
-from sqlite3 import *
+from sqlite3 import connect
 
 # Database name
 database_name = "skyfix_database.db"
