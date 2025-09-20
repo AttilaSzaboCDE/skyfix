@@ -1,20 +1,29 @@
 {% extends "base_index.html" %}
-
 {% block content %}
-<h2>Choose your subscription</h2>
-
-<form method="post">
-  <label for="subscription">subscriptions:</label>
-  <select name="subscription" id="subscription">
-    {% for sub in subscriptions %}
-      <option value="{{ sub.subscription_id }}">
-        {{ sub.display_name }} ({{ sub.subscription_id }})
-      </option>
-    {% endfor %}
-  </select>
-  <button type="submit">Save</button>
+<h2 class="mb-4 text-center">Choose your subscription</h2>
+<form method="post" class="text-center">
+  <div class="mb-3">
+    <label for="subscription" class="form-label fw-bold">Subscriptions:</label>
+    <select name="subscription" id="subscription" class="form-select form-select-lg shadow-sm rounded-pill w-50 mx-auto">
+      {% for sub in subscriptions %}
+        <option value="{{ sub.subscription_id }}">
+          {{ sub.display_name }} ({{ sub.subscription_id }})
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary btn-lg shadow rounded-pill px-5">Save</button>
 </form>
-
-<p>The chosed subscription: {{ selected_sub }}</p>
-
+{% if selected_sub %}
+<div class="mt-5 d-flex justify-content-center">
+  <div class="card shadow-sm border-primary" style="max-width: 30rem;">
+    <div class="card-body text-center">
+      <h5 class="card-title text-primary">
+        <i class="bi bi-check-circle-fill me-2"></i>Selected subscription
+      </h5>
+      <p class="card-text fs-5 fw-bold text-dark">{{ selected_sub }}</p>
+    </div>
+  </div>
+</div>
+{% endif %}
 {% endblock %}

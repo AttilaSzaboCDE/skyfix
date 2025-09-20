@@ -1,0 +1,54 @@
+{% extends "base_index.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/history.css') }}">
+<script src="{{ url_for('static', filename='js/history.js') }}"></script>
+{% endblock %}
+{% block content %}
+<div class="table-container">
+  <h2 class="mb-4 text-center">Database Query</h2>
+  <form class="filter-form" method="post" action=""">
+    <div>
+      <label for="tableSelect">Table</label>
+      <select id="tableSelect" name="table" required>
+        {% for t in tables %}
+          <option value="{{ t }}" {% if selected_table==t %}selected{% endif %}>{{ t }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label for="dateFrom">From</label>
+      <input type="date" id="dateFrom" name="date_from" value="" required>
+    </div>
+    <div>
+      <label for="dateTo">To</label>
+      <input type="date" id="dateTo" name="date_to" value="" required>
+    </div>
+    <div class="btn-group">
+      <button type="submit" class="btn-primary btn btn-primary btn-lg shadow rounded-pill px-5">Query</button>
+      <button type="button" class="btn-secondary rounded-pill px-5" onclick="exportToTxt()">Export to TXT</button>
+    </div>
+  </form>
+  {% if db_results %}
+  <div class="table-wrapper" id="resultTableWrapper">
+    <table class="custom-table" id="resultTable">
+      <thead>
+        <tr>
+         {% for column in table_columns %}
+          <th>{{ column }}</th>
+         {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in db_results %}
+            <tr>
+              {% for cell in row %}
+                <td>{{ cell }}</td>
+              {% endfor %}
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
