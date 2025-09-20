@@ -1,0 +1,11 @@
+.chart-card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 0 15px 20px 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+}
+.summary-card {
+      margin-top: 15px;
+}

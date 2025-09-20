@@ -1,16 +1,12 @@
 {% extends "base_index.html" %}
-
+{% block head %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base_monitoring.css') }}">
+<meta http-equiv="refresh" content="5">
+{% endblock %}
 {% block content %}
-<!-- DataTables CSS -->
-
-<!-- Ide jönnek a hivatkozások-->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/container_monitoring.css') }}">
- <meta http-equiv="refresh" content="5">
-
-<!-- Hivatkozások vége -->
- 
 <div class="container-fluid my-5">
-  <!-- Felső rész: Két kártya egymás mellett -->
+  <!-- --------  Up side tables ----------- -->
   <div class="row mb-4">
     <!-- Running Scripts -->
     <div class="col-md-6 mb-4">
@@ -46,8 +42,7 @@
         </div>
       </div>
     </div>
-
-    <!-- Új tábla: More Scripts -->
+    <!-- Doesnt Solved alerts table -->
     <div class="col-md-6 mb-4">
       <div class="card shadow">
         <div class="card-header bg-info text-white">
@@ -57,7 +52,8 @@
           <table class="table table-hover mb-0 text-center">
             <thead class="table-light">
               <tr>
-                <th>Script ID</th>
+                <th>Service name</th>
+                <th>Service type</th>
                 <th>Description</th>
                 <th>Status</th>
               </tr>
@@ -68,6 +64,7 @@
                 <td>{{ item[0] }}</td>
                 <td>{{ item[1] }}</td>
                 <td>{{ item[2] }}</td>
+                <td>{{ item[3] }}</td>
               </tr>
               {% endfor %}
             </tbody>
@@ -76,8 +73,7 @@
       </div>
     </div>
   </div>
-
-  <!-- Alsó rész: Logs és Alerts kártyák egymás mellett -->
+  <!-- --------  Down side tables ----------- -->
   <div class="row">
     <!-- Alerts -->
     <div class="col-md-6 mb-4">
@@ -90,6 +86,7 @@
             <thead>
               <tr>
                 <th>Service name</th>
+                <th>Service type</th>
                 <th>Issue type</th>
                 <th>Time</th>
               </tr>
@@ -98,8 +95,9 @@
              {% for alert in alerts %}
               <tr>
                 <td>{{ alert[0] }}</td>  <!-- Service name -->
-                <td>{{ alert[1] }}</td>  <!-- Issue type -->
-                <td>{{ alert[2] }}</td>  <!-- Time -->
+                <td>{{ alert[1] }}</td>  <!-- Service type -->
+                <td>{{ alert[2] }}</td>  <!-- Issue type -->
+                <td>{{ alert[3] }}</td>  <!-- Time -->
               </tr>
             {% endfor %}
             </tbody>
@@ -107,7 +105,6 @@
         </div>
       </div>
     </div>
-    
     <!-- Logs -->
     <div class="col-md-6 mb-4">
       <div class="card shadow">
@@ -118,8 +115,9 @@
           <table class="table table-striped mb-0 text-center">
             <thead>
               <tr>
-                <th>Script name</th>
                 <th>Service name</th>
+                <th>Service type</th>
+                <th>Script name</th>
                 <th>Status</th>
               </tr>
             </thead>
@@ -128,7 +126,8 @@
               <tr>
                 <td>{{ result[0] }}</td>
                 <td>{{ result[1] }}</td>
-                <td>{% if result[2] %}
+                <td>{{ result[2] }}</td>
+                <td>{% if result[3] %}
                     <div class="d-inline-flex align-items-center justify-content-center bg-success rounded-circle text-white" style="width: 1.5rem; height: 1.5rem; font-size: 1rem;">✓</div>
                     {% else %}
                     <div class="d-inline-flex align-items-center justify-content-center bg-danger rounded-circle text-white" style="width: 1.5rem; height: 1.5rem; font-size: 1rem;">✕</div>

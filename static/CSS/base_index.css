@@ -1,0 +1,27 @@
+/* Hover animáció világos kék háttérrel */
+    .hover-bg-primary:hover {
+      background-color: #007bff !important;
+      color: white !important;
+      transition: 0.2s;
+    }
+
+    /* Kerekített menüpontok */
+    .nav-link {
+      border-radius: 0.5rem;
+    }
+
+    /* Sidebar shadow és scroll */
+    .col-auto {
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      overflow-y: auto;
+    }
+
+    /* Reszponzív: mobilon összehúzható sidebar */
+    @media (max-width: 768px) {
+      .col-auto {
+        width: 60px !important;
+      }
+      .nav-link span {
+        display: none !important;
+      }
+    }

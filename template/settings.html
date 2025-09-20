@@ -1,8 +1,6 @@
 {% extends "base_index.html" %}
-
 {% block content %}
 <h2 class="mb-4 text-center">Choose your subscription</h2>
-
 <form method="post" class="text-center">
   <div class="mb-3">
     <label for="subscription" class="form-label fw-bold">Subscriptions:</label>
@@ -16,7 +14,6 @@
   </div>
   <button type="submit" class="btn btn-primary btn-lg shadow rounded-pill px-5">Save</button>
 </form>
-
 {% if selected_sub %}
 <div class="mt-5 d-flex justify-content-center">
   <div class="card shadow-sm border-primary" style="max-width: 30rem;">
@@ -29,5 +26,4 @@
   </div>
 </div>
 {% endif %}
-
 {% endblock %}
