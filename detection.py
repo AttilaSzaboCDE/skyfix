@@ -9,7 +9,7 @@ from automated.vm.vm_restart import vm_restart
 from automated.vm.vm_restart import *
 from automated.vm.scale_up import vm_scale_up
 from automated.vm.scale_up import *
-from database.skyfix_db import insert_alert, insert_script_log
+from database.skyfix_db import insert_alert, insert_script_log, insert_other_issue
 
 # Global variables
 alert_list = []             # alert logs
@@ -60,14 +60,16 @@ def fault_type_choose(alert_reason, alert_service_type, sub_id, az_tenant_id, az
         date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         running_item = [resourcename, alert_reason, scripts_name_list[0]]  # <-- elmentjük
         running_list.append(running_item)
-        vm_state = stop_vm_by_name(resourcename, azure_credential_tenant_id, azure_credential_client_id, azure_credential_secret_key, azure_credential_sub_id)
+        vm_state, stop_result = stop_vm_by_name(resourcename, azure_credential_tenant_id, azure_credential_client_id, azure_credential_secret_key, azure_credential_sub_id)
         if vm_state == 0:
             running_list.remove(running_item)
             results_list.append([resourcename, alert_service_type, scripts_name_list[0],  True])
             insert_script_log(resourcename, alert_service_type, scripts_name_list[0], date_time, "success")     
         else:
+            running_list.remove(running_item)
             results_list.append([resourcename, alert_service_type, scripts_name_list[0],  False])
-            insert_script_log(resourcename, alert_service_type, scripts_name_list[0], date_time, "fail")         
+            insert_script_log(resourcename, alert_service_type, scripts_name_list[0], date_time, "fail")
+            insert_other_issue(resourcename, alert_service_type, stop_result, date_time, "fail")         
             
     elif alert_reason == "lowdiskspace":
         date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -79,6 +81,7 @@ def fault_type_choose(alert_reason, alert_service_type, sub_id, az_tenant_id, az
             results_list.append([resourcename, alert_service_type, scripts_name_list[1],  True])
             insert_script_log(resourcename, alert_service_type, scripts_name_list[1], date_time, "success") 
         else:
+            running_list.remove(running_item)
             results_list.append([resourcename, alert_service_type, scripts_name_list[1],  False])
             insert_script_log(resourcename, alert_service_type, scripts_name_list[1], date_time, "fail")  
     
@@ -92,6 +95,7 @@ def fault_type_choose(alert_reason, alert_service_type, sub_id, az_tenant_id, az
             results_list.append([resourcename, alert_service_type, scripts_name_list[2],  True])
             insert_script_log(resourcename, alert_service_type, scripts_name_list[2], date_time, "success") 
         else:
+            running_list.remove(running_item)
             results_list.append([resourcename, alert_service_type, scripts_name_list[2],  False])
             insert_script_log(resourcename, alert_service_type, scripts_name_list[2], date_time, "fail") 
     
@@ -105,6 +109,7 @@ def fault_type_choose(alert_reason, alert_service_type, sub_id, az_tenant_id, az
             results_list.append([resourcename, alert_service_type, scripts_name_list[3],  True])
             insert_script_log(resourcename, alert_service_type, scripts_name_list[3], date_time, "success") 
         else:
+            running_list.remove(running_item)
             results_list.append([resourcename, alert_service_type, scripts_name_list[3],  False])
             insert_script_log(resourcename, alert_service_type, scripts_name_list[3], date_time, "fail") 
     #

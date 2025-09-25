@@ -4,10 +4,11 @@ from azure.mgmt.compute import ComputeManagementClient
 from azure.mgmt.resource import ResourceManagementClient
 from azure.identity import ClientSecretCredential
 
-global vm_status
+global vm_status, stop_result
 
 # Megállítjuk a virtuális gépet
 def stop_vm_by_name(vm_name: str, tenant_id: str, client_id: str, client_secret: str, subscription_id: str):
+    global stop_result
     credential = ClientSecretCredential(
         tenant_id=tenant_id,
         client_id=client_id,
@@ -38,21 +39,31 @@ def stop_vm_by_name(vm_name: str, tenant_id: str, client_id: str, client_secret:
     compute_client = ComputeManagementClient(credential, subscription_id)
 
     # VM leállítása
-    async_vm_deallocate = compute_client.virtual_machines.begin_deallocate(resource_group_name=resource_group, vm_name=vm_name)
-    async_vm_deallocate.wait()
+    try:
+        async_vm_deallocate = compute_client.virtual_machines.begin_deallocate(resource_group_name=resource_group, vm_name=vm_name)
+        async_vm_deallocate.wait()
+        return 0, "" # Sikeres leállítás
+    except Exception as e:
+        print(f"Hiba a VM leállításakor: {e}")
+        # stop_result = e
+        return 1, str(e) # Hiba történt a leállítás során
     
-    power_state = compute_client.virtual_machines.instance_view(resource_group_name=resource_group, vm_name=vm_name).statuses[1].code
-    
-    if power_state == "PowerState/deallocated":
-        return 0 # VM deallocated
-    elif power_state == "PowerState/running":
-        return 1 # VM running
-    elif power_state == "PowerState/stopped":
-        return 2 # VM stopped (not deallocated)
-    else:
-        return 3 # doesnt stopped
-        
-    
+    # 
+    # async_vm_deallocate = compute_client.virtual_machines.begin_deallocate(resource_group_name=resource_group, vm_name=vm_name)
+    # async_vm_deallocate.wait()
+    # 
+    # power_state = compute_client.virtual_machines.instance_view(resource_group_name=resource_group, vm_name=vm_name).statuses[1].code
+    # 
+    # if power_state == "PowerState/deallocated":
+    #     return 0 # VM deallocated
+    # elif power_state == "PowerState/running":
+    #     return 1 # VM running
+    # elif power_state == "PowerState/stopped":
+    #     return 2 # VM stopped (not deallocated)
+    # else:
+    #     return 3 # doesnt stopped
+    #     
+    # 
         
     
     
