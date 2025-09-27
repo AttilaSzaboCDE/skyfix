@@ -1,5 +1,6 @@
 import sys
 from datetime import datetime
+from time import sleep
 from automated.vm.stop_vm import stop_vm_by_name
 from automated.vm.stop_vm import *
 from app import *
@@ -50,77 +51,140 @@ def fault_type_choose(alert_reason, alert_service_type, sub_id, az_tenant_id, az
     azure_credential_client_id = az_client_id
     azure_credential_secret_key = az_client_secret
     scripts_name_list = ["stop_vm_by_name", "storage_attach", "vm_scale_up", "vm_restart"]
+    stop_result = ""
     
     ### Add the alert reason to the alert list
     if resourcename in [x[0] for x in running_list]:
         # print(f"{resourcename} már fut")
         return 0
-    ### Separator for different alert reasons - VIRTUAL MACHINES
-    if alert_reason == "highcpu":
-        date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        running_item = [resourcename, alert_reason, scripts_name_list[0]]  # <-- elmentjük
-        running_list.append(running_item)
-        vm_state, stop_result = stop_vm_by_name(resourcename, azure_credential_tenant_id, azure_credential_client_id, azure_credential_secret_key, azure_credential_sub_id)
-        if vm_state == 0:
-            running_list.remove(running_item)
-            results_list.append([resourcename, alert_service_type, scripts_name_list[0],  True])
-            insert_script_log(resourcename, alert_service_type, scripts_name_list[0], date_time, "success")     
-        else:
-            running_list.remove(running_item)
-            results_list.append([resourcename, alert_service_type, scripts_name_list[0],  False])
-            insert_script_log(resourcename, alert_service_type, scripts_name_list[0], date_time, "fail")
-            insert_other_issue(resourcename, alert_service_type, stop_result, date_time, "fail")         
-            
-    elif alert_reason == "lowdiskspace":
-        date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        running_item = [resourcename, alert_reason, scripts_name_list[1]]
-        running_list.append(running_item)
-        storage_state = storage_attach(resourcename, azure_credential_tenant_id, azure_credential_client_id, azure_credential_secret_key, azure_credential_sub_id)
-        if storage_state == 0:
-            running_list.remove(running_item)
-            results_list.append([resourcename, alert_service_type, scripts_name_list[1],  True])
-            insert_script_log(resourcename, alert_service_type, scripts_name_list[1], date_time, "success") 
-        else:
-            running_list.remove(running_item)
-            results_list.append([resourcename, alert_service_type, scripts_name_list[1],  False])
-            insert_script_log(resourcename, alert_service_type, scripts_name_list[1], date_time, "fail")  
     
-    elif alert_reason == "memoryusage":
-        date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        running_item = [resourcename, alert_reason, scripts_name_list[2]]
-        running_list.append(running_item)
-        memory_state = vm_scale_up(resourcename, azure_credential_tenant_id, azure_credential_client_id, azure_credential_secret_key, azure_credential_sub_id)
-        if memory_state == 0:
-            running_list.remove(running_item)
-            results_list.append([resourcename, alert_service_type, scripts_name_list[2],  True])
-            insert_script_log(resourcename, alert_service_type, scripts_name_list[2], date_time, "success") 
+    if alert_service_type == "vm":
+        ### Separator for different alert reasons - VIRTUAL MACHINES
+        if alert_reason == "highcpu":
+            date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            running_item = [resourcename, alert_reason, scripts_name_list[0]]  # <-- elmentjük
+            running_list.append(running_item)
+            sleep(5)  # <-- szimuláljuk a futást
+            vm_state, stop_result = stop_vm_by_name(resourcename, azure_credential_tenant_id, azure_credential_client_id, azure_credential_secret_key, azure_credential_sub_id)
+            if vm_state == 0:
+                running_list.remove(running_item)
+                results_list.append([resourcename, alert_service_type, scripts_name_list[0],  True])
+                insert_script_log(resourcename, alert_service_type, scripts_name_list[0], date_time, "success")     
+            else:
+                running_list.remove(running_item)
+                results_list.append([resourcename, alert_service_type, scripts_name_list[0],  False])
+                insert_script_log(resourcename, alert_service_type, scripts_name_list[0], date_time, "fail")
+                missing_list.append([resourcename, alert_service_type, stop_result, "fail"])
+                insert_other_issue(resourcename, alert_service_type, stop_result, date_time, "fail")         
+
+        elif alert_reason == "lowdiskspace":
+            date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            running_item = [resourcename, alert_reason, scripts_name_list[1]]
+            running_list.append(running_item)
+            sleep(5)
+            storage_state = storage_attach(resourcename, azure_credential_tenant_id, azure_credential_client_id, azure_credential_secret_key, azure_credential_sub_id)
+            if storage_state == 0:
+                running_list.remove(running_item)
+                results_list.append([resourcename, alert_service_type, scripts_name_list[1],  True])
+                insert_script_log(resourcename, alert_service_type, scripts_name_list[1], date_time, "success") 
+            else:
+                running_list.remove(running_item)
+                results_list.append([resourcename, alert_service_type, scripts_name_list[1],  False])
+                insert_script_log(resourcename, alert_service_type, scripts_name_list[1], date_time, "fail")
+                missing_list.append([resourcename, alert_service_type, stop_result, "fail"])
+                insert_other_issue(resourcename, alert_service_type, stop_result, date_time, "fail")   
+
+        elif alert_reason == "memoryusage":
+            date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            running_item = [resourcename, alert_reason, scripts_name_list[2]]
+            running_list.append(running_item)
+            sleep(5)
+            memory_state = vm_scale_up(resourcename, azure_credential_tenant_id, azure_credential_client_id, azure_credential_secret_key, azure_credential_sub_id)
+            if memory_state == 0:
+                running_list.remove(running_item)
+                results_list.append([resourcename, alert_service_type, scripts_name_list[2],  True])
+                insert_script_log(resourcename, alert_service_type, scripts_name_list[2], date_time, "success") 
+            else:
+                running_list.remove(running_item)
+                results_list.append([resourcename, alert_service_type, scripts_name_list[2],  False])
+                insert_script_log(resourcename, alert_service_type, scripts_name_list[2], date_time, "fail")
+                missing_list.append([resourcename, alert_service_type, stop_result, "fail"])
+                insert_other_issue(resourcename, alert_service_type, stop_result, date_time, "fail")  
+
+        elif alert_reason == "vmstopped":
+            date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            running_item = [resourcename, alert_reason, scripts_name_list[3]]
+            running_list.append(running_item)
+            sleep(5)
+            vm_state2, stop_result = vm_restart(resourcename, azure_credential_tenant_id, azure_credential_client_id, azure_credential_secret_key, azure_credential_sub_id)
+            if vm_state2 == 0:
+                running_list.remove(running_item)
+                results_list.append([resourcename, alert_service_type, scripts_name_list[3],  True])
+                insert_script_log(resourcename, alert_service_type, scripts_name_list[3], date_time, "success") 
+            else:
+                running_list.remove(running_item)
+                results_list.append([resourcename, alert_service_type, scripts_name_list[3],  False])
+                insert_script_log(resourcename, alert_service_type, scripts_name_list[3], date_time, "fail")
+                missing_list.append([resourcename, alert_service_type, stop_result, "fail"])
+                insert_other_issue(resourcename, alert_service_type, stop_result, date_time, "fail")  
         else:
-            running_list.remove(running_item)
-            results_list.append([resourcename, alert_service_type, scripts_name_list[2],  False])
-            insert_script_log(resourcename, alert_service_type, scripts_name_list[2], date_time, "fail") 
-    
-    elif alert_reason == "vmstopped":
-        date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        running_item = [resourcename, alert_reason, scripts_name_list[3]]
-        running_list.append(running_item)
-        vm_state2 = vm_restart(resourcename, azure_credential_tenant_id, azure_credential_client_id, azure_credential_secret_key, azure_credential_sub_id)
-        if vm_state2 == 0:
-            running_list.remove(running_item)
-            results_list.append([resourcename, alert_service_type, scripts_name_list[3],  True])
-            insert_script_log(resourcename, alert_service_type, scripts_name_list[3], date_time, "success") 
+            missing_list.append([resourcename, alert_service_type, "Unknown alert reason", "fail"])
+    elif alert_service_type == "container":
+        if alert_reason == "cont_down":
+            date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            running_item = [resourcename, alert_reason, "container_restart"]
+            running_list.append(running_item)
+            sleep(5)
+            cont_state = 1 # itt lesz a függvény
+            if cont_state == 0:
+                running_list.remove(running_item)
+                results_list.append([resourcename, alert_service_type, "container_restart",  True])
+                insert_script_log(resourcename, alert_service_type, "container_restart", date_time, "success") 
+            else:
+                running_list.remove(running_item)
+                results_list.append([resourcename, alert_service_type, "container_restart",  False])
+                insert_script_log(resourcename, alert_service_type, "container_restart", date_time, "fail")
+                missing_list.append([resourcename, alert_service_type, stop_result, "fail"])
+                insert_other_issue(resourcename, alert_service_type, stop_result, date_time, "fail")
+        elif alert_reason == "cont_high_mem":
+            date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            running_item = [resourcename, alert_reason, "container_scale_up"]
+            running_list.append(running_item)
+            sleep(5)
+            cont_state = 1 # itt lesz a függvény
+            if cont_state == 0:
+                running_list.remove(running_item)
+                results_list.append([resourcename, alert_service_type, "container_scale_up",  True])
+                insert_script_log(resourcename, alert_service_type, "container_scale_up", date_time, "success") 
+            else:
+                running_list.remove(running_item)
+                results_list.append([resourcename, alert_service_type, "container_scale_up",  False])
+                insert_script_log(resourcename, alert_service_type, "container_scale_up", date_time, "fail")
+                missing_list.append([resourcename, alert_service_type, stop_result, "fail"])
+                insert_other_issue(resourcename, alert_service_type, stop_result, date_time, "fail")
+        elif alert_reason == "cont_high_cpu":
+            date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            running_item = [resourcename, alert_reason, "container_scale_up"]
+            running_list.append(running_item)
+            sleep(5)
+            cont_state = 1 # itt lesz a függvény
+            if cont_state == 0:
+                running_list.remove(running_item)
+                results_list.append([resourcename, alert_service_type, "container_scale_up",  True])
+                insert_script_log(resourcename, alert_service_type, "container_scale_up", date_time, "success") 
+            else:
+                running_list.remove(running_item)
+                results_list.append([resourcename, alert_service_type, "container_scale_up",  False])
+                insert_script_log(resourcename, alert_service_type, "container_scale_up", date_time, "fail")
+                missing_list.append([resourcename, alert_service_type, stop_result, "fail"])
+                insert_other_issue(resourcename, alert_service_type, stop_result, date_time, "fail")
         else:
-            running_list.remove(running_item)
-            results_list.append([resourcename, alert_service_type, scripts_name_list[3],  False])
-            insert_script_log(resourcename, alert_service_type, scripts_name_list[3], date_time, "fail") 
-    #
-    #else:
-    #    date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    #    running_item = [resourcename, "No script available", False]
-    #    missing_list.append(running_item)
-    #    insert_other_issue(resourcename, "No script available", "failed", date_time)
-    ### End of VM alert reasons
-    # Separator for different alert reasons - CONTAINERS
-    
+            missing_list.append([resourcename, alert_service_type, "Unknown alert reason", "fail"])
+    else:
+        return 0
+        
+
+
 
 
 

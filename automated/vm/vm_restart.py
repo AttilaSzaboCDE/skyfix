@@ -23,25 +23,26 @@ def vm_restart(vm_name: str, tenant_id: str, client_id: str, client_secret: str,
             vm_resource = res
             break
     if not vm_resource:
-        print(f"Nem található VM a '{vm_name}' névvel.")
-        return
+        return 1, str("VM not found")
     
     resource_group = vm_resource.id.split("/")[4]
     subscription_id = vm_resource.id.split("/")[2]
     
     compute_client = ComputeManagementClient(credential, subscription_id)
     
-    async_vm_start = compute_client.virtual_machines.begin_start(
+    try:
+        async_vm_start = compute_client.virtual_machines.begin_start(
         resource_group_name=resource_group,
         vm_name=vm_name
-    )
-    async_vm_start.wait()
+        )
+        async_vm_start.wait()
+        return 0, ""
+    except Exception as e:
+        return 1, str(e) 
+
+
     
-    power_state = compute_client.virtual_machines.instance_view(resource_group_name=resource_group, vm_name=vm_name).statuses[1].code
     
-    if power_state == "PowerState/running":
-        return 0 # VM deallocated
-    else:
-        return 3 # doesnt stopped
+    
     
     
