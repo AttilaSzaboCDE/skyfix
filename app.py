@@ -38,6 +38,7 @@ def base_monitor():
 def handle_alert():
     data = request.json
     detection_check(data, selected_sub, tenant_id, client_id, client_secret)
+    # print(data)
     return "OK", 200
 
 @app.route("/login", methods=["GET", "POST"])

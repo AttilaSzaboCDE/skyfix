@@ -40,15 +40,12 @@ def vm_scale_up(vm_name: str, tenant_id: str, client_id: str, client_secret: str
         available_sizes = compute_client.virtual_machine_sizes.list(location)
         size_list = [s.name for s in available_sizes]
         
-        try:
-            current_index = size_list.index(current_size)
-        except ValueError:
-            return 1, str("Current size not in list")
+        
+        current_index = size_list.index(current_size)
+
         
         if current_index + 1 < len(size_list):
             new_size = size_list[current_index + 1]
-        else:
-            return 1, str("No larger VM size available")
         
         vm.hardware_profile.vm_size = new_size
         async_vm_update = compute_client.virtual_machines.begin_create_or_update(
