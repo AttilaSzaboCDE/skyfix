@@ -35,8 +35,7 @@ A few things about, you can do with SkyFix:
 ## Picture of Fixing Dashboard
 <img width="1920" height="1080" alt="Képernyőfotó 2025-09-08 - 21 04 22" src="https://github.com/user-attachments/assets/fe3082ae-ed0c-4586-806a-24b8dbb1d692" />
 <img width="1920" height="1080" alt="Képernyőfotó 2025-09-08 - 21 04 55" src="https://github.com/user-attachments/assets/13a41b65-4d86-4a41-a419-a8be1da2110d" />
+<img width="1920" height="1080" alt="Képernyőfotó 2025-10-01 - 19 08 19" src="https://github.com/user-attachments/assets/4d7ed769-67ad-4a7c-81e3-b0df418d3ead" />
 <img width="1920" height="1080" alt="Képernyőfotó 2025-09-08 - 21 06 13" src="https://github.com/user-attachments/assets/599857e8-52f1-477a-b3ee-1cd9672bc5af" />
-
-
-
-
+<img width="1920" height="1080" alt="Képernyőfotó 2025-10-01 - 19 06 11" src="https://github.com/user-attachments/assets/2868734c-362c-40d0-8c81-e38c8cd49497" />
+<img width="1920" height="1080" alt="Képernyőfotó 2025-10-01 - 19 06 33" src="https://github.com/user-attachments/assets/600d203b-02ec-4210-9ff8-c7d4f1168bb0" />
