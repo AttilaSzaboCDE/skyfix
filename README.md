@@ -14,6 +14,10 @@ It can help you if you want to focus on hard tasks, because it can handle typica
 
 **Available for Linux/Windows and MacOs**
 
+**Download it:** docker pull attilaszabocde/skyfix:latest
+
+**Docker Reposirotry:** [Skyfix App](https://hub.docker.com/r/attilaszabocde/skyfix)
+
 ## Features
 
 A few things about, you can do with SkyFix:
