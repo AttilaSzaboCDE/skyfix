@@ -11,12 +11,12 @@ def vm_restart(vm_name: str, tenant_id: str, client_id: str, client_secret: str,
         client_id=client_id,
         client_secret=client_secret
     )
-    
+
     subscription_id = subscription_id
     resource_client = ResourceManagementClient(credential, subscription_id)
-    
+
     resources = list(resource_client.resources.list())
-    
+
     vm_resource = None
     for res in resources:
         if res.name.lower() == vm_name.lower():
@@ -24,12 +24,12 @@ def vm_restart(vm_name: str, tenant_id: str, client_id: str, client_secret: str,
             break
     if not vm_resource:
         return 1, str("VM not found")
-    
+
     resource_group = vm_resource.id.split("/")[4]
     subscription_id = vm_resource.id.split("/")[2]
-    
+
     compute_client = ComputeManagementClient(credential, subscription_id)
-    
+
     try:
         async_vm_start = compute_client.virtual_machines.begin_start(
         resource_group_name=resource_group,
@@ -38,11 +38,4 @@ def vm_restart(vm_name: str, tenant_id: str, client_id: str, client_secret: str,
         async_vm_start.wait()
         return 0, ""
     except Exception as e:
-        return 1, str(e) 
-
-
-    
-    
-    
-    
-    
+        return 1, str(e)

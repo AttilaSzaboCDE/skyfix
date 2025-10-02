@@ -1,11 +1,9 @@
 import secrets
-from flask import Flask, redirect, render_template, request, session, url_for, jsonify
+from detection import *
 from azure.identity import ClientSecretCredential
 from azure.mgmt.resource import SubscriptionClient
-from detection import *
+from flask import Flask, redirect, render_template, request, session, url_for, jsonify
 from database.skyfix_db import get_other_issues, get_script_logs, get_alerts_sql, get_stats
-
-
 
 app = Flask(__name__, template_folder='template')
 app.secret_key = secrets.token_hex(16)
@@ -36,9 +34,7 @@ def base_monitor():
 
 @app.route('/alert', methods=['POST'])
 def handle_alert():
-    data = request.json
-    detection_check(data, selected_sub, tenant_id, client_id, client_secret)
-    # print(data)
+    detection_check(request.json, selected_sub, tenant_id, client_id, client_secret)
     return "OK", 200
 
 @app.route("/login", methods=["GET", "POST"])
@@ -49,7 +45,7 @@ def login():
     if request.method == "POST":
         tenant_id = request.form.get("directoryid")
         client_id = request.form.get("applicationid")
-        client_secret = request.form.get("clientsecretval")   
+        client_secret = request.form.get("clientsecretval")
         try:
             # Azure authentication
             credential = ClientSecretCredential(
@@ -120,4 +116,4 @@ def vizualization():
     return render_template('vizualization.html')
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0', port=5000)
+    app.run(debug=False, host='0.0.0.0', port=5002)

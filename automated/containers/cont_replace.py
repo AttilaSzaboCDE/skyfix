@@ -30,7 +30,6 @@ def cont_replace(container_name: str, tenant_id: str, client_id: str, client_sec
 
         if hasattr(group_def, 'diagnostics') and group_def.diagnostics and hasattr(group_def.diagnostics, 'log_analytics'):
             group_def.diagnostics.log_analytics = None
-        
         # --- Eredeti törlése
         container_client.container_groups.begin_delete(resource_group, container_name).wait()
         # --- Újra létrehozás ugyanazzal a definícióval
@@ -43,7 +42,3 @@ def cont_replace(container_name: str, tenant_id: str, client_id: str, client_sec
         return 0, ""
     except Exception as e:
         return 1, str(e)
-
-    
-
-    

@@ -1,5 +1,3 @@
-
-# db.py
 from datetime import datetime
 import sqlite3
 from threading import Lock
@@ -58,7 +56,7 @@ def get_alerts_sql(date_from, date_to):
         cur = conn.cursor()
         cur.execute(
             "SELECT service_name, service_type, issue_type, timestamp FROM alerts_list "
-            "WHERE DATE(timestamp) BETWEEN ? AND ?", 
+            "WHERE DATE(timestamp) BETWEEN ? AND ?",
             (date_from, date_to)
         )
         rows = cur.fetchall()
@@ -75,7 +73,7 @@ def get_other_issues(date_from, date_to):
         rows = cur.fetchall()
         conn.close()
         return rows
-    
+
 def get_script_logs(date_from, date_to):
     """Lekérdezés az összes script log-re"""
     with db_lock:
@@ -90,11 +88,11 @@ def get_script_logs(date_from, date_to):
 def get_stats():
     conn = get_connection()
     cursor = conn.cursor()
-    
+
     # Lekérdezzük service_type és status alapján
     cursor.execute("""
-        SELECT service_type, LOWER(status), COUNT(*) 
-        FROM scripts_log_list 
+        SELECT service_type, LOWER(status), COUNT(*)
+        FROM scripts_log_list
         GROUP BY service_type, LOWER(status)
     """)
     results = cursor.fetchall()
@@ -113,10 +111,10 @@ def get_stats():
     total_success = sum(v["success"] for v in stats.values())
     total_failed = sum(v["failed"] for v in stats.values())
     stats["summary"] = {"success": total_success, "failed": total_failed}
-    
+
     return stats
 
-# Create a connection 
+# Create a connection
 conn = sqlite3.connect(database_name)
 cur = conn.cursor()
 
@@ -126,7 +124,7 @@ cur.execute('''CREATE TABLE IF NOT EXISTS alerts_list
                 service_type TEXT,
                 issue_type TEXT,
                 timestamp TEXT)''')
- 
+
 cur.execute('''CREATE TABLE IF NOT EXISTS other_issues_list
               (id INTEGER PRIMARY KEY AUTOINCREMENT,
               service_name TEXT,
@@ -143,7 +141,6 @@ cur.execute('''CREATE TABLE IF NOT EXISTS scripts_log_list
                script_name TEXT,
                timestamp TEXT,
                status TEXT)''')
-
 
 conn.commit()
 conn.close()

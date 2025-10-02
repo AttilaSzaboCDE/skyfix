@@ -34,4 +34,3 @@ def cont_restarting(container_name: str, tenant_id: str, client_id: str, client_
         return 0, f"Container {container_name} restarted successfully"
     except Exception as e:
         return 1, str(e)
-

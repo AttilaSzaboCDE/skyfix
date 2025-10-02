@@ -5,7 +5,7 @@ from azure.mgmt.containerinstance import ContainerInstanceManagementClient
 def cont_scale_up(container_name: str, tenant_id: str, client_id: str, client_secret: str, subscription_id: str):
     cpu_increase: float = 0.5
     mem_increase: float = 0.5
-    
+
     credential = ClientSecretCredential(
         tenant_id=tenant_id,
         client_id=client_id,
@@ -49,3 +49,4 @@ def cont_scale_up(container_name: str, tenant_id: str, client_id: str, client_se
         return 0, ""
     except Exception as e:
         return 1, str(e)
+    

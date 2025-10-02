@@ -10,12 +10,12 @@ def vm_scale_up(vm_name: str, tenant_id: str, client_id: str, client_secret: str
         client_id=client_id,
         client_secret=client_secret
     )
-    
+
     subscription_id = subscription_id
     resource_client = ResourceManagementClient(credential, subscription_id)
-    
+
     resources = list(resource_client.resources.list())
-    
+
     vm_resource = None
     for res in resources:
         if res.name.lower() == vm_name.lower():
@@ -23,12 +23,12 @@ def vm_scale_up(vm_name: str, tenant_id: str, client_id: str, client_secret: str
             break
     if not vm_resource:
         return 1, str("VM not found")
-    
+
     resource_group = vm_resource.id.split("/")[4]
     subscription_id = vm_resource.id.split("/")[2]
-    
+
     compute_client = ComputeManagementClient(credential, subscription_id)
-    
+
     try:
         async_vm_deallocate = compute_client.virtual_machines.begin_deallocate(resource_group_name=resource_group, vm_name=vm_name)
         async_vm_deallocate.wait()
@@ -39,14 +39,12 @@ def vm_scale_up(vm_name: str, tenant_id: str, client_id: str, client_secret: str
 
         available_sizes = compute_client.virtual_machine_sizes.list(location)
         size_list = [s.name for s in available_sizes]
-        
-        
+
         current_index = size_list.index(current_size)
 
-        
         if current_index + 1 < len(size_list):
             new_size = size_list[current_index + 1]
-        
+
         vm.hardware_profile.vm_size = new_size
         async_vm_update = compute_client.virtual_machines.begin_create_or_update(
         resource_group_name=resource_group,
@@ -60,8 +58,6 @@ def vm_scale_up(vm_name: str, tenant_id: str, client_id: str, client_secret: str
         vm_name=vm_name
         )
         async_vm_start.wait()
-        return 0, "" 
+        return 0, ""
     except Exception as e:
         return 1, str(e)
-    
-    
