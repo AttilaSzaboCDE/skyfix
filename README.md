@@ -13,19 +13,59 @@ This is a Cloud tool for DevOps/Cloud Engineers and Operations team members.
 It can help you if you want to focus on hard tasks, because it can handle typical issues and troubleshooting them.
 
 **Available for Linux/Windows and MacOs**
-
 **Download it:** docker pull attilaszabocde/skyfix:latest
-
 **Docker Reposirotry:** [Skyfix App](https://hub.docker.com/r/attilaszabocde/skyfix)
 
-## Features
+## Preconditions:
+- Git
+- Docker & Docker Compose
+- Azure Cloud account
 
-A few things about, you can do with SkyFix:
+## Reasons Table:
+- VM:
+  - highcpu (Stoping the VM)
+  - memoryusage (Scale up the VM)
+  - vmstopped (VM restart)
+- Containers:
+  - contdown (Restarting the container)
+  - conthighmem (Scale the container)
+  - contmiss (Replace the container)
 
-* Azure cloud system monitoring
-* Issues and Errors detecting
-* Automated scripts running
-* Self-Repair mode
+## Step by step
+### 1. Please click on **releases** folder and download the file or copy it.
+
+### 2. After that, please run this command where the file is: **docker compose -f docker-compose_v1.yml up -d**
+
+### 3. Create an Azure Bot:
+**Commands:**
+  1. az login
+  2. az account set --subscription "Your Subscription ID"
+  3. az ad sp create-for-rbac \
+     --name "my-devops-bot" \
+     --role Contributor \
+     --scopes /subscriptions/$(az account show --query id -o tsv)
+  4. The output:
+    {
+    "appId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "displayName": "my-devops-bot",
+    "password": "xxxxxxxxxxxxxxxxxxxxxxxx",
+    "tenant": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    }
+### 4. Login into Skyfix and Add Data source in Grafana (Use Azure Monitor)
+
+### 5. Create an Contract points where you have to add these informations:
+- Add a name like: Skyfix webhook
+- Add an Integration: Webhook
+- URL: http://<container-ip-address>:<webapp-port>/alert
+- HTTP Method: POST
+- Extra Headers: Name: Content-Type, Value: application/json
+
+### 6. Create an Alert:
+- Enter a name
+- Enter a query
+- Add folder ands labels: --- **IMPORTANT** ----
+  Add new label: key=reason, value=<choose one form reason>
+- Fill up the other things and Done!
 
 ## Technology
 * **Cloud** - ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
