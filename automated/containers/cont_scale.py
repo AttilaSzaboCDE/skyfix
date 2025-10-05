@@ -14,7 +14,6 @@ def cont_scale_up(container_name: str, tenant_id: str, client_id: str, client_se
 
     container_client = ContainerInstanceManagementClient(credential, subscription_id)
 
-    # --- Konténer keresése
     groups = list(container_client.container_groups.list())
     target_group = None
     for g in groups:

@@ -11,7 +11,6 @@ def cont_replace(container_name: str, tenant_id: str, client_id: str, client_sec
 
     container_client = ContainerInstanceManagementClient(credential, subscription_id)
 
-    # --- Konténer keresése
     groups = list(container_client.container_groups.list())
     target_group = None
     for g in groups:
@@ -25,14 +24,12 @@ def cont_replace(container_name: str, tenant_id: str, client_id: str, client_sec
     resource_group = target_group.id.split("/")[4]
 
     try:
-        # --- Konfiguráció mentése (image, cpu, memory, ports, env, stb.)
         group_def = container_client.container_groups.get(resource_group, container_name)
 
         if hasattr(group_def, 'diagnostics') and group_def.diagnostics and hasattr(group_def.diagnostics, 'log_analytics'):
             group_def.diagnostics.log_analytics = None
-        # --- Eredeti törlése
+
         container_client.container_groups.begin_delete(resource_group, container_name).wait()
-        # --- Újra létrehozás ugyanazzal a definícióval
         async_create = container_client.container_groups.begin_create_or_update(
             resource_group,
             container_name,

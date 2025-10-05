@@ -1,9 +1,10 @@
 import secrets
-from detection import *
+from flask import Flask, redirect, render_template, request, session, url_for, jsonify
 from azure.identity import ClientSecretCredential
 from azure.mgmt.resource import SubscriptionClient
-from flask import Flask, redirect, render_template, request, session, url_for, jsonify
+from detection import *
 from database.skyfix_db import get_other_issues, get_script_logs, get_alerts_sql, get_stats
+
 
 app = Flask(__name__, template_folder='template')
 app.secret_key = secrets.token_hex(16)
@@ -24,7 +25,7 @@ def login_required(f):
         if not session.get("logged_in"):
             return redirect(url_for("login"))
         return f(*args, **kwargs)
-    wrapper.__name__ = f.__name__  # Flask kompatibilitás miatt
+    wrapper.__name__ = f.__name__
     return wrapper
 
 @app.route('/')
@@ -34,7 +35,9 @@ def base_monitor():
 
 @app.route('/alert', methods=['POST'])
 def handle_alert():
-    detection_check(request.json, selected_sub, tenant_id, client_id, client_secret)
+    data = request.json
+    detection_check(data, selected_sub, tenant_id, client_id, client_secret)
+    # print(data)
     return "OK", 200
 
 @app.route("/login", methods=["GET", "POST"])
@@ -116,4 +119,4 @@ def vizualization():
     return render_template('vizualization.html')
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0', port=5002)
+    app.run(debug=False, host='0.0.0.0', port=5000)
