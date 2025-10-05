@@ -29,19 +29,53 @@ def cont_scale_up(container_name: str, tenant_id: str, client_id: str, client_se
     try:
         group_def = container_client.container_groups.get(resource_group, container_name)
 
+        container = group_def.containers[0]
+
+        old_volumes = getattr(group_def, "volumes", None)
+        old_volume_mounts = getattr(container, "volume_mounts", None)
+
         if hasattr(group_def, 'diagnostics') and group_def.diagnostics and hasattr(group_def.diagnostics, 'log_analytics'):
             group_def.diagnostics.log_analytics = None
 
-        container = group_def.containers[0]
-        container.resources.requests.cpu += cpu_increase
-        container.resources.requests.memory_in_gb += mem_increase
+        container_client.container_groups.begin_delete(resource_group, container_name).wait()
 
-        async_update = container_client.container_groups.begin_create_or_update(
+        from azure.mgmt.containerinstance.models import (
+            ContainerGroup,
+            Container,
+            ResourceRequests,
+            ResourceRequirements,
+            ContainerPort,
+            IpAddress,
+            Port,
+            OperatingSystemTypes
+        )
+
+        new_container = Container(
+            name=container.name,
+            image=container.image,
+            resources=ResourceRequirements(
+                requests=ResourceRequests(cpu=cpu_increase, memory_in_gb=mem_increase)
+            ),
+            ports=container.ports,
+            environment_variables=container.environment_variables,
+            volume_mounts=old_volume_mounts
+        )
+
+        new_group = ContainerGroup(
+            location=group_def.location,
+            os_type=group_def.os_type or OperatingSystemTypes.linux,
+            containers=[new_container],
+            restart_policy=group_def.restart_policy,
+            ip_address=group_def.ip_address
+        )
+
+        async_create = container_client.container_groups.begin_create_or_update(
             resource_group,
             container_name,
-            group_def
+            new_group
         )
-        async_update.wait()
+        async_create.wait()
+
         return 0, ""
     except Exception as e:
         return 1, str(e)
