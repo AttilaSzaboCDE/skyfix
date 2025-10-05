@@ -28,7 +28,6 @@ def cont_scale_up(container_name: str, tenant_id: str, client_id: str, client_se
     resource_group = target_group.id.split("/")[4]
 
     try:
-        # --- Lekérjük az aktuális konfigurációt
         group_def = container_client.container_groups.get(resource_group, container_name)
 
         container = group_def.containers[0]
@@ -38,11 +37,9 @@ def cont_scale_up(container_name: str, tenant_id: str, client_id: str, client_se
 
         if hasattr(group_def, 'diagnostics') and group_def.diagnostics and hasattr(group_def.diagnostics, 'log_analytics'):
             group_def.diagnostics.log_analytics = None
-#
-         # --- Töröljük a régi csoportot
+
         container_client.container_groups.begin_delete(resource_group, container_name).wait()
 
-        # --- Új container group definíció létrehozása az új értékekkel
         from azure.mgmt.containerinstance.models import (
             ContainerGroup,
             Container,
@@ -54,7 +51,6 @@ def cont_scale_up(container_name: str, tenant_id: str, client_id: str, client_se
             OperatingSystemTypes
         )
 
-        # --- Ugyanaz az image és beállítások maradnak
         new_container = Container(
             name=container.name,
             image=container.image,
@@ -66,7 +62,6 @@ def cont_scale_up(container_name: str, tenant_id: str, client_id: str, client_se
             volume_mounts=old_volume_mounts
         )
 
-        # --- IP és hálózati beállítások megtartása
         new_group = ContainerGroup(
             location=group_def.location,
             os_type=group_def.os_type or OperatingSystemTypes.linux,
@@ -75,7 +70,6 @@ def cont_scale_up(container_name: str, tenant_id: str, client_id: str, client_se
             ip_address=group_def.ip_address
         )
 
-        # --- Új csoport létrehozása
         async_create = container_client.container_groups.begin_create_or_update(
             resource_group,
             container_name,
