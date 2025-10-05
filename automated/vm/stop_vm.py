@@ -11,7 +11,7 @@ def stop_vm_by_name(vm_name: str, tenant_id: str, client_id: str, client_secret:
         client_secret=client_secret
     )
 
-    subscription_id = subscription_id 
+    subscription_id = subscription_id
     resource_client = ResourceManagementClient(credential, subscription_id)
 
     resources = list(resource_client.resources.list())
@@ -33,7 +33,6 @@ def stop_vm_by_name(vm_name: str, tenant_id: str, client_id: str, client_secret:
     try:
         async_vm_deallocate = compute_client.virtual_machines.begin_deallocate(resource_group_name=resource_group, vm_name=vm_name)
         async_vm_deallocate.wait()
-        return 0, "" 
+        return 0, ""
     except Exception as e:
-        return 1, str(e) 
-    
+        return 1, str(e)

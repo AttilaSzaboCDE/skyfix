@@ -12,7 +12,7 @@ def storage_attach(vm_name: str, tenant_id: str, client_id: str, client_secret: 
         client_secret=client_secret
     )
 
-    subscription_id = subscription_id 
+    subscription_id = subscription_id
     resource_client = ResourceManagementClient(credential, subscription_id)
 
     resources = list(resource_client.resources.list())
@@ -37,8 +37,8 @@ def storage_attach(vm_name: str, tenant_id: str, client_id: str, client_secret: 
         disk_size = 50  # GB
         disk_name = f"{vm_name}-data-disk"
         if disk_name not in existing_disk_names:
-            pass
-        
+            return 1, str("Disk with the same name already exists.")
+
         i = 1
         while f"{disk_name}-{i}" in existing_disk_names:
             i += 1
@@ -79,8 +79,6 @@ def storage_attach(vm_name: str, tenant_id: str, client_id: str, client_secret: 
             parameters=vm
         )
         async_vm_update.wait()
-        return 0, "" 
+        return 0, ""
     except Exception as e:
         return 1, str(e)
-
-    

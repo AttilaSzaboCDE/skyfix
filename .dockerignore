@@ -1,0 +1,14 @@
+__pycache__
+.DS_Store
+.git
+.github
+.gitignore
+.vscode
+myvenv
+plans
+releases
+docker-compose.yml
+Dockerfile
+skyfix_database.db
+LICENSE
+README.md

@@ -6,7 +6,6 @@ from detection import *
 from database.skyfix_db import get_other_issues, get_script_logs, get_alerts_sql, get_stats
 
 
-
 app = Flask(__name__, template_folder='template')
 app.secret_key = secrets.token_hex(16)
 
@@ -26,7 +25,7 @@ def login_required(f):
         if not session.get("logged_in"):
             return redirect(url_for("login"))
         return f(*args, **kwargs)
-    wrapper.__name__ = f.__name__  # Flask kompatibilitás miatt
+    wrapper.__name__ = f.__name__
     return wrapper
 
 @app.route('/')
@@ -49,7 +48,7 @@ def login():
     if request.method == "POST":
         tenant_id = request.form.get("directoryid")
         client_id = request.form.get("applicationid")
-        client_secret = request.form.get("clientsecretval")   
+        client_secret = request.form.get("clientsecretval")
         try:
             # Azure authentication
             credential = ClientSecretCredential(

@@ -1,7 +1,9 @@
-app.py
 myvenv
-quserinfo.py
-*.pem
-autentication.json
-random.json
-random_hulyeseg.png
+__pycache__
+.vscode
+.github
+plans
+skyfix_database.db
+docker-compose.yml
+Dockerfile
+releases

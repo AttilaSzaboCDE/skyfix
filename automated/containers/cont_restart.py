@@ -26,12 +26,11 @@ def cont_restarting(container_name: str, tenant_id: str, client_id: str, client_
 
     try:
         # --- Leállítás
-        container_client.container_groups.begin_stop(resource_group, container_name).wait()
+        container_client.container_groups.begin_restart(resource_group, container_name).wait()
 
         # --- Újraindítás
-        container_client.container_groups.begin_start(resource_group, container_name).wait()
+        # container_client.container_groups.begin_start(resource_group, container_name).wait()
 
         return 0, f"Container {container_name} restarted successfully"
     except Exception as e:
         return 1, str(e)
-
