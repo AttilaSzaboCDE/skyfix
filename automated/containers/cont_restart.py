@@ -11,7 +11,6 @@ def cont_restarting(container_name: str, tenant_id: str, client_id: str, client_
 
     container_client = ContainerInstanceManagementClient(credential, subscription_id)
 
-    # --- Konténer keresése
     groups = list(container_client.container_groups.list())
     target_group = None
     for g in groups:
@@ -25,11 +24,8 @@ def cont_restarting(container_name: str, tenant_id: str, client_id: str, client_
     resource_group = target_group.id.split("/")[4]
 
     try:
-        # --- Leállítás
-        container_client.container_groups.begin_stop(resource_group, container_name).wait()
-
-        # --- Újraindítás
-        container_client.container_groups.begin_start(resource_group, container_name).wait()
+        # --- Restart
+        container_client.container_groups.begin_restart(resource_group, container_name).wait()
 
         return 0, f"Container {container_name} restarted successfully"
     except Exception as e:
