@@ -1,9 +1,7 @@
-myvenv
 __pycache__
-.vscode
 .github
-plans
+.vscode
+.DS_Store
+myvenv
 skyfix_database.db
-docker-compose.yml
-Dockerfile
-releases
+

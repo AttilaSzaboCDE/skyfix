@@ -11,7 +11,6 @@ def cont_replace(container_name: str, tenant_id: str, client_id: str, client_sec
 
     container_client = ContainerInstanceManagementClient(credential, subscription_id)
 
-    # --- Konténer keresése
     groups = list(container_client.container_groups.list())
     target_group = None
     for g in groups:

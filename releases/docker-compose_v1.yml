@@ -1,0 +1,38 @@
+services:
+  grafana:
+    image: grafana/grafana:latest
+    container_name: Grafana_monitoring
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    restart: always
+    networks:
+      - default
+
+  skyfix:
+    image: attilaszabocde/skyfix:latest
+    container_name: skyfix_app
+    ports:
+      - "5002:5000"
+    restart: always
+    depends_on:
+      - grafana
+    volumes:
+      - skyfix-data:/data
+    networks:
+      - default
+
+volumes:
+  grafana-storage:
+    name: grafana-storage
+    driver: local
+  skyfix-data:
+    name: skyfix-data
+    driver: local
+
+networks:
+  default:
+    driver: bridge
