@@ -1,6 +1,7 @@
 {
-    "workbench.colorTheme": "DarkPig Theme",
+    "workbench.colorTheme": "Darkpig Modern Dark Theme",
     "python.analysis.extraPaths": [
-        "./automated/vm"
+        "./automated/vm",
+        "./automated/containers"
     ]
 }

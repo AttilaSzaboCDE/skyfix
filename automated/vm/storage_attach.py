@@ -4,7 +4,6 @@ from azure.identity import ClientSecretCredential
 from azure.mgmt.compute.models import DiskCreateOption, CreationData, Disk
 from app import *
 
-global storage_status
 
 def storage_attach(vm_name: str, tenant_id: str, client_id: str, client_secret: str, subscription_id: str):
     credential = ClientSecretCredential(
@@ -13,11 +12,9 @@ def storage_attach(vm_name: str, tenant_id: str, client_id: str, client_secret: 
         client_secret=client_secret
     )
 
-    # Subscription ID
-    subscription_id = subscription_id  # Írd ide a subscription id-t
+    subscription_id = subscription_id
     resource_client = ResourceManagementClient(credential, subscription_id)
 
-    # Kilistázzuk az összes erőforrást az adott subscriptionben
     resources = list(resource_client.resources.list())
 
     vm_resource = None
@@ -25,63 +22,63 @@ def storage_attach(vm_name: str, tenant_id: str, client_id: str, client_secret: 
         if res.name.lower() == vm_name.lower():
             vm_resource = res
             break
-
     if not vm_resource:
-        print(f"Nem található VM a '{vm_name}' névvel.")
-        return
+        return 1, str("VM not found")
 
     resource_group = vm_resource.id.split("/")[4]
     subscription_id = vm_resource.id.split("/")[2]
 
     compute_client = ComputeManagementClient(credential, subscription_id)
 
-    # Storage paraméterek
-    disk_size = 50 # GB
-    disk_name = f"{vm_name}-data-disk"
-    
-    # Létrehozzuk a lemezt
-    async_disk_creation = compute_client.disks.begin_create_or_update(
-        resource_group_name=resource_group,
-        disk_name=disk_name,
-        parameters=Disk(
-            location=vm_resource.location,
-            disk_size_gb=disk_size,
-            creation_data=CreationData(
-                create_option=DiskCreateOption.empty
+    try:
+        disk = list(compute_client.disks.list_by_resource_group(resource_group))
+        existing_disk_names = [d.name for d in disk]
+
+        disk_size = 50  # GB
+        disk_name = f"{vm_name}-data-disk"
+        if disk_name not in existing_disk_names:
+            return 1, str("Disk with the same name already exists.")
+
+        i = 1
+        while f"{disk_name}-{i}" in existing_disk_names:
+            i += 1
+            disk_name = f"{vm_name}-data-disk-{i}"
+
+        async_disk_creation = compute_client.disks.begin_create_or_update(
+            resource_group_name=resource_group,
+            disk_name=disk_name,
+            parameters=Disk(
+                location=vm_resource.location,
+                disk_size_gb=disk_size,
+                creation_data=CreationData(
+                    create_option=DiskCreateOption.empty
+                )
             )
         )
-    )
-    disk = async_disk_creation.result()
-    print(f"Disk létrehozva: {disk.id}")
-    
-    # VM lekérése
-    vm = compute_client.virtual_machines.get(resource_group, vm_name)
-    
-    # LUN megadása
-    lun = 0
-    if vm.storage_profile.data_disks:
-        lun = len(vm.storage_profile.data_disks)
 
-    # Új lemez hozzácsatolása
-    vm.storage_profile.data_disks.append({
-        "lun": lun,
-        "name": disk_name,
-        "create_option": DiskCreateOption.attach,
-        "managed_disk": {
-            "id": disk.id
-        }
-    })
+        disk = async_disk_creation.result()
 
-    # VM frissítése
-    async_vm_update = compute_client.virtual_machines.begin_create_or_update(
-        resource_group_name=resource_group,
-        vm_name=vm_name,
-        parameters=vm
-    )
-    result = async_vm_update.result()
-    
-    if result.provisioning_state == "Succeeded":
-        return 0 # Storage attached successfully
-    else:
-        return 1 # Storage attachment failed
-    
+        vm = compute_client.virtual_machines.get(resource_group, vm_name)
+
+        lun = 0
+        if vm.storage_profile.data_disks:
+            lun = len(vm.storage_profile.data_disks)
+
+        vm.storage_profile.data_disks.append({
+            "lun": lun,
+            "name": disk_name,
+            "create_option": DiskCreateOption.attach,
+            "managed_disk": {
+                "id": disk.id
+            }
+        })
+
+        async_vm_update = compute_client.virtual_machines.begin_create_or_update(
+            resource_group_name=resource_group,
+            vm_name=vm_name,
+            parameters=vm
+        )
+        async_vm_update.wait()
+        return 0, ""
+    except Exception as e:
+        return 1, str(e)

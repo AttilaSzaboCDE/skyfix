@@ -1,7 +1,7 @@
-app.py
+__pycache__
+.github
+.vscode
+.DS_Store
 myvenv
-quserinfo.py
-*.pem
-autentication.json
-random.json
-random_hulyeseg.png
+skyfix_database.db
+
