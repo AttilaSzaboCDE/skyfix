@@ -34,23 +34,30 @@ It can help you if you want to focus on hard tasks, because it can handle typica
 ## Step by step
 ### 1. Please click on **releases** folder and download the file or copy it.
 
-### 2. After that, please run this command where the file is: **docker compose -f docker-compose_v1.yml up -d**
+### 2. After that, please run this command where the file is: 
+```bash
+docker compose -f docker-compose_v1.yml up -d
+```
 
 ### 3. Create an Azure Bot:
 **Commands:**
-  1. az login
-  2. az account set --subscription "Your Subscription ID"
-  3. az ad sp create-for-rbac \
+```bash
+az login
+az account set --subscription "Your Subscription ID"
+az ad sp create-for-rbac \
      --name "my-devops-bot" \
      --role Contributor \
      --scopes /subscriptions/$(az account show --query id -o tsv)
-  4. The output:
+```
+The output:
+```bash
     {
     "appId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "displayName": "my-devops-bot",
     "password": "xxxxxxxxxxxxxxxxxxxxxxxx",
     "tenant": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
+```
 ### 4. Login into Skyfix and Add Data source in Grafana (Use Azure Monitor)
 
 ### 5. Create an Contract points where you have to add these informations:
